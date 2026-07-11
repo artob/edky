@@ -10,8 +10,8 @@ pub struct PublicKeyBytes(pub(crate) [u8; PUBLIC_KEY_LEN]);
 
 impl Display for PublicKeyBytes {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        let mut buffer = [0u8; PUBLIC_KEY_LEN * 2];
         const HEX_CHARS: &[u8; 16] = b"0123456789abcdef";
+        let mut buffer = [0u8; PUBLIC_KEY_LEN * 2];
         for (i, &byte) in self.0.iter().enumerate() {
             buffer[i * 2] = HEX_CHARS[(byte >> 4) as usize];
             buffer[i * 2 + 1] = HEX_CHARS[(byte & 0x0f) as usize];

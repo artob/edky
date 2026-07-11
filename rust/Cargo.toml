@@ -30,10 +30,12 @@ base64 = ["dep:data-encoding"]
 z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
 
 # Interoperability:
-interops = ["ed25519-dalek", "iroh", "libsql", "turso"]
+interops = ["ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "turso"]
 ed25519-dalek = ["dep:ed25519-dalek"]
+eloquent = ["dep:eloquent"]
 iroh = ["dep:iroh"]
 libsql = ["dep:libsql"]
+rocket = ["dep:rocket"]
 turso = ["dep:turso"]
 
 [dependencies]
@@ -44,8 +46,10 @@ bs58 = { version = "0.5", default-features = false, optional = true }
 data-encoding = { version = "2.11", default-features = false, optional = true }
 data-encoding-macro = { version = "0.1", default-features = false, optional = true }
 ed25519-dalek = { version = "=3.0.0-rc.0", default-features = false, optional = true }
+eloquent = { version = "2.1", default-features = false, optional = true }
 iroh = { version = "1.0", default-features = false, optional = true }
 libsql = { version = "0.9", default-features = false, optional = true }
+rocket = { version = "0.5", default-features = false, optional = true }
 turso = { version = "0.6", default-features = false, optional = true }
 
 # Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
