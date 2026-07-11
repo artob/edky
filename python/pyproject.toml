@@ -1,0 +1,44 @@
+# See: https://packaging.python.org/en/latest/tutorials/packaging-projects/
+# See: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
+[build-system]
+requires = ["uv_build>=0.10.8,<0.11.0"]
+build-backend = "uv_build"
+
+[project]
+name = "edky"
+description = "Convert Ed25519 public keys between various encoding formats."
+readme = "README.md"
+authors = [{ name = "Arto Bendiken", email = "arto@bendiken.net" }]
+license = "Unlicense"
+license-files = ["UNLICENSE"]
+version = "0.0.0"
+
+requires-python = ">=3.14"
+dependencies = []
+
+keywords = ["ed25519", "curve25519", "ecc", "cryptography"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: Public Domain",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.optional-dependencies]
+
+[project.urls]
+Homepage = "https://edky.dev"
+Repository = "https://github.com/artob/edky"
+Changelog = "https://github.com/artob/edky/blob/master/CHANGES.md"
+Releases = "https://github.com/artob/edky/releases"
+Issues = "https://github.com/artob/edky/issues"
+Documentation = "https://github.com/artob/edky/blob/master/python/README.md"
+
+[tool.uv.build-backend]
+module-name = "edky"

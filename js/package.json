@@ -1,0 +1,62 @@
+{
+  "name": "edky",
+  "version": "0.0.0",
+  "description": "Convert Ed25519 public keys between various encoding formats.",
+  "homepage": "https://edky.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artob/edky.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artob/edky/issues"
+  },
+  "author": {
+    "name": "Arto Bendiken",
+    "email": "arto@bendiken.net",
+    "url": "https://ar.to"
+  },
+  "license": "Unlicense",
+  "keywords": [
+    "ed25519",
+    "curve25519",
+    "ecc",
+    "cryptography"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "UNLICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --out-dir dist",
+    "clean": "rm -rf dist",
+    "prepare": "bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "latest",
+    "tsup": "latest",
+    "typescript": "^5.4.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

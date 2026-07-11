@@ -1,0 +1,31 @@
+# See: https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "edky"
+version = "0.0.0"
+authors = ["Arto Bendiken"]
+edition = "2024"
+#rust-version = "1.85"
+description = "Convert Ed25519 public keys between various encoding formats."
+#documentation = "https://docs.rs/edky"
+readme = true
+homepage = "https://edky.dev"
+repository = "https://github.com/artob/edky"
+license = "Unlicense"
+keywords = ["ed25519", "curve25519", "ecc", "cryptography"]
+categories = ["cryptography", "no-std"]
+publish = true
+
+[features]
+default = ["all", "std"]
+all = []
+alloc = []
+std = ["alloc"]
+unstable = []
+
+[dependencies]
+
+# Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

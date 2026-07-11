@@ -1,0 +1,14 @@
+# See: https://dart.dev/tools/pub/pubspec
+---
+name: edky
+version: 0.0.0
+description: >-
+  Convert Ed25519 public keys between various encoding formats.
+homepage: https://edky.dev
+repository: https://github.com/artob/edky
+issue_tracker: https://github.com/artob/edky/issues
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0
+environment:
+  sdk: ^3.11.0
