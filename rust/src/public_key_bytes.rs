@@ -6,6 +6,11 @@ pub const PUBLIC_KEY_LEN: usize = 32;
 
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
 #[repr(transparent)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
+#[cfg_attr(
+    feature = "serde",
+    serde(try_from = "alloc::string::String", into = "alloc::string::String")
+)]
 pub struct PublicKeyBytes(pub(crate) [u8; PUBLIC_KEY_LEN]);
 
 impl Display for PublicKeyBytes {
@@ -73,6 +78,24 @@ where
 impl From<[u8; PUBLIC_KEY_LEN]> for PublicKeyBytes {
     fn from(input: [u8; PUBLIC_KEY_LEN]) -> Self {
         Self(input)
+    }
+}
+
+#[cfg(feature = "alloc")]
+impl TryFrom<alloc::string::String> for PublicKeyBytes {
+    type Error = core::num::TryFromIntError; // TODO
+
+    fn try_from(input: alloc::string::String) -> Result<Self, Self::Error> {
+        //Self::from_str(&input).map_err(|_| Self::Error)
+        Ok(PublicKeyBytes::ZERO) // TODO
+    }
+}
+
+#[cfg(feature = "alloc")]
+impl From<PublicKeyBytes> for alloc::string::String {
+    fn from(input: PublicKeyBytes) -> alloc::string::String {
+        use alloc::string::ToString;
+        input.to_string()
     }
 }
 

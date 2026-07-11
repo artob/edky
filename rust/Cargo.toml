@@ -19,7 +19,7 @@ publish = true
 [features]
 default = ["all", "std"]
 all = ["encodings"]
-alloc = ["bs58?/alloc", "ed25519-dalek?/alloc"]
+alloc = ["bs58?/alloc", "ed25519-dalek?/alloc", "serde?/alloc"]
 std = ["derive_more/std", "alloc"]
 unstable = []
 
@@ -30,12 +30,13 @@ base64 = ["dep:data-encoding"]
 z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
 
 # Interoperability:
-interops = ["ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "turso"]
+interops = ["ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso"]
 ed25519-dalek = ["dep:ed25519-dalek"]
-eloquent = ["dep:eloquent"]
+eloquent = ["dep:eloquent", "alloc"]
 iroh = ["dep:iroh"]
 libsql = ["dep:libsql"]
 rocket = ["dep:rocket"]
+serde = ["dep:serde", "alloc"]
 turso = ["dep:turso"]
 
 [dependencies]
@@ -50,6 +51,7 @@ eloquent = { version = "2.1", default-features = false, optional = true }
 iroh = { version = "1.0", default-features = false, optional = true }
 libsql = { version = "0.9", default-features = false, optional = true }
 rocket = { version = "0.5", default-features = false, optional = true }
+serde = { version = "1", default-features = false, features = ["derive"], optional = true }
 turso = { version = "0.6", default-features = false, optional = true }
 
 # Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
