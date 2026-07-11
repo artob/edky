@@ -18,12 +18,20 @@ publish = true
 
 [features]
 default = ["all", "std"]
-all = []
-alloc = []
+all = ["ed25519-dalek", "iroh"]
+alloc = ["ed25519-dalek?/alloc"]
 std = ["alloc"]
 unstable = []
 
+# Interoperability:
+ed25519-dalek = ["dep:ed25519-dalek"]
+iroh = ["dep:iroh"]
+
 [dependencies]
+
+# Interoperability:
+ed25519-dalek = { version = "=3.0.0-rc.0", default-features = false, optional = true }
+iroh = { version = "1.0", default-features = false, optional = true }
 
 # Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
 [package.metadata.docs.rs]
