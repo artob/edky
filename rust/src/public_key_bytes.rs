@@ -88,3 +88,5 @@ impl From<&alloc::vec::Vec<u8>> for PublicKeyBytes {
 
 include!("public_key_bytes/ed25519-dalek.rs");
 include!("public_key_bytes/iroh.rs");
+include!("public_key_bytes/libsql.rs");
+include!("public_key_bytes/turso.rs");
