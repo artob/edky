@@ -1,5 +1,5 @@
 {
-  "name": "edky",
+  "name": "edky.js",
   "version": "0.0.0",
   "description": "Convert Ed25519 public keys between various encoding formats.",
   "homepage": "https://edky.dev",

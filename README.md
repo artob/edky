@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Package on Crates.io](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
-[![Package on NPM](https://img.shields.io/npm/v/edky)](https://npmjs.com/package/edky)
+[![Package on NPM](https://img.shields.io/npm/v/edky.js)](https://npmjs.com/package/edky.js)
 [![Package on Pub.dev](https://img.shields.io/pub/v/edky)](https://pub.dev/packages/edky)
 [![Package on PyPI](https://img.shields.io/pypi/v/edky)](https://pypi.org/project/edky)
 [![Package on RubyGems](https://img.shields.io/gem/v/edky)](https://rubygems.org/gems/edky)
@@ -20,10 +20,10 @@ cargo add edky
 ### Installation from [NPM]
 
 ```bash
-npm install edky
-bun add edky
-pnpm add edky
-yarn add edky
+npm install edky.js
+bun add edky.js
+pnpm add edky.js
+yarn add edky.js
 ```
 
 ### Installation from [Pub.dev]
@@ -64,7 +64,7 @@ git clone https://github.com/artob/edky.git
 [![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
 
 [Crates.io]: https://crates.io/crates/edky
-[NPM]: https://npmjs.com/package/edky
+[NPM]: https://npmjs.com/package/edky.js
 [Pub.dev]: https://pub.dev/packages/edky
 [PyPI]: https://pypi.org/project/edky
 [RubyGems]: https://rubygems.org/gems/edky
