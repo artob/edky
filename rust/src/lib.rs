@@ -4,7 +4,7 @@
 
 #![no_std]
 #![forbid(unsafe_code)]
-#![allow(unused_imports)]
+#![allow(unused)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[cfg(feature = "alloc")]
@@ -16,3 +16,6 @@ extern crate std;
 #[doc = include_str!("../../README.md")]
 #[cfg(doctest)]
 pub struct ReadmeDoctests;
+
+mod public_key_bytes;
+pub use public_key_bytes::*;
