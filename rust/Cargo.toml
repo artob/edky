@@ -18,18 +18,29 @@ publish = true
 
 [features]
 default = ["all", "std"]
-all = ["ed25519-dalek", "iroh"]
-alloc = ["ed25519-dalek?/alloc"]
-std = ["alloc"]
+all = ["encodings"]
+alloc = ["bs58?/alloc", "ed25519-dalek?/alloc"]
+std = ["derive_more/std", "alloc"]
 unstable = []
 
+# Encodings:
+encodings = ["base58", "base64", "z32"]
+base58 = ["dep:bs58"]
+base64 = ["dep:data-encoding"]
+z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
+
 # Interoperability:
+interops = ["ed25519-dalek", "iroh"]
 ed25519-dalek = ["dep:ed25519-dalek"]
 iroh = ["dep:iroh"]
 
 [dependencies]
+derive_more = { version = "2", default-features = false, features = ["display", "from_str"] }
 
 # Interoperability:
+bs58 = { version = "0.5", default-features = false, optional = true }
+data-encoding = { version = "2.11", default-features = false, optional = true }
+data-encoding-macro = { version = "0.1", default-features = false, optional = true }
 ed25519-dalek = { version = "=3.0.0-rc.0", default-features = false, optional = true }
 iroh = { version = "1.0", default-features = false, optional = true }
 

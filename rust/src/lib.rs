@@ -19,3 +19,6 @@ pub struct ReadmeDoctests;
 
 mod public_key_bytes;
 pub use public_key_bytes::*;
+
+mod public_key_encoding;
+pub use public_key_encoding::*;
