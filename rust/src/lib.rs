@@ -17,6 +17,9 @@ extern crate std;
 #[cfg(doctest)]
 pub struct ReadmeDoctests;
 
+mod parse_public_key_error;
+pub use parse_public_key_error::*;
+
 mod public_key_bytes;
 pub use public_key_bytes::*;
 

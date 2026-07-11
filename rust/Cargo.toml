@@ -41,6 +41,7 @@ turso = ["dep:turso"]
 
 [dependencies]
 derive_more = { version = "2", default-features = false, features = ["display", "from_str"] }
+thiserror = { version = "2", default-features = false }
 
 # Interoperability:
 bs58 = { version = "0.5", default-features = false, optional = true }

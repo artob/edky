@@ -1,7 +1,7 @@
 // This is free and unencumbered software released into the public domain.
 
 #[cfg(feature = "eloquent")]
-impl eloquent::ToSql for PublicKey {
+impl eloquent::ToSql for PublicKeyBytes {
     fn to_sql(&self) -> Result<alloc::string::String, eloquent::error::EloquentError> {
         use alloc::string::ToString;
         const HEX_CHARS: &[u8; 16] = b"0123456789ABCDEF";

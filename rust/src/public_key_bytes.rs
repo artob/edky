@@ -1,6 +1,7 @@
 // This is free and unencumbered software released into the public domain.
 
-use core::{fmt::Display, ops::Deref};
+use super::ParsePublicKeyError;
+use core::{fmt::Display, ops::Deref, str::FromStr};
 
 pub const PUBLIC_KEY_LEN: usize = 32;
 
@@ -23,6 +24,32 @@ impl Display for PublicKeyBytes {
         }
         // Safe to unwrap as it's an ASCII buffer containing only HEX_CHARS:
         f.write_str(core::str::from_utf8(&buffer).unwrap())
+    }
+}
+
+impl FromStr for PublicKeyBytes {
+    type Err = ParsePublicKeyError;
+
+    fn from_str(input: &str) -> Result<Self, Self::Err> {
+        if input.len() != PUBLIC_KEY_LEN * 2 {
+            return Err(ParsePublicKeyError::InvalidLength(input.len()));
+        }
+        if !input.is_ascii() {
+            return Err(ParsePublicKeyError::InvalidChars);
+        }
+
+        let mut result = [0u8; PUBLIC_KEY_LEN];
+
+        for (i, chunk) in input.as_bytes().chunks(2).enumerate() {
+            if chunk.iter().any(|c| !c.is_ascii_hexdigit()) {
+                return Err(ParsePublicKeyError::InvalidDigit(i * 2));
+            }
+            // Safe to unwrap as chunk is ASCII and contains only HEX_CHARS:
+            let digit = core::str::from_utf8(chunk).unwrap();
+            result[i] = u8::from_str_radix(digit, 16).unwrap();
+        }
+
+        Ok(Self(result))
     }
 }
 
@@ -83,7 +110,7 @@ impl From<[u8; PUBLIC_KEY_LEN]> for PublicKeyBytes {
 
 #[cfg(feature = "alloc")]
 impl TryFrom<alloc::string::String> for PublicKeyBytes {
-    type Error = core::num::TryFromIntError; // TODO
+    type Error = ParsePublicKeyError;
 
     fn try_from(input: alloc::string::String) -> Result<Self, Self::Error> {
         //Self::from_str(&input).map_err(|_| Self::Error)
@@ -110,6 +137,8 @@ impl From<&alloc::vec::Vec<u8>> for PublicKeyBytes {
 }
 
 include!("public_key_bytes/ed25519-dalek.rs");
+include!("public_key_bytes/eloquent.rs");
 include!("public_key_bytes/iroh.rs");
 include!("public_key_bytes/libsql.rs");
+include!("public_key_bytes/rocket.rs");
 include!("public_key_bytes/turso.rs");
