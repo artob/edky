@@ -3,7 +3,6 @@
 //! Edky converts Ed25519 public keys between various encoding formats.
 
 #![no_std]
-#![forbid(unsafe_code)]
 #![allow(unused)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 

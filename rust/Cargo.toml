@@ -30,7 +30,8 @@ base64 = ["dep:data-encoding"]
 z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
 
 # Interoperability:
-interops = ["ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso"]
+interops = ["bytemuck", "ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso"]
+bytemuck = ["dep:bytemuck"]
 ed25519-dalek = ["dep:ed25519-dalek"]
 eloquent = ["dep:eloquent", "alloc"]
 iroh = ["dep:iroh"]
@@ -45,6 +46,7 @@ thiserror = { version = "2", default-features = false }
 
 # Interoperability:
 bs58 = { version = "0.5", default-features = false, optional = true }
+bytemuck = { version = "1.25", default-features = false, optional = true }
 data-encoding = { version = "2.11", default-features = false, optional = true }
 data-encoding-macro = { version = "0.1", default-features = false, optional = true }
 ed25519-dalek = { version = "=3.0.0-rc.0", default-features = false, optional = true }

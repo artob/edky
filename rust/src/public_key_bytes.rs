@@ -113,8 +113,7 @@ impl TryFrom<alloc::string::String> for PublicKeyBytes {
     type Error = ParsePublicKeyError;
 
     fn try_from(input: alloc::string::String) -> Result<Self, Self::Error> {
-        //Self::from_str(&input).map_err(|_| Self::Error)
-        Ok(PublicKeyBytes::ZERO) // TODO
+        Self::from_str(&input)
     }
 }
 
@@ -136,6 +135,7 @@ impl From<&alloc::vec::Vec<u8>> for PublicKeyBytes {
     }
 }
 
+include!("public_key_bytes/bytemuck.rs");
 include!("public_key_bytes/ed25519-dalek.rs");
 include!("public_key_bytes/eloquent.rs");
 include!("public_key_bytes/iroh.rs");

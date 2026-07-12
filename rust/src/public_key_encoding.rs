@@ -5,6 +5,9 @@ use derive_more::{Display, FromStr};
 #[derive(Clone, Copy, Debug, Default, Display, Eq, FromStr, Hash, Ord, PartialEq, PartialOrd)]
 #[non_exhaustive]
 pub enum PublicKeyEncoding {
+    #[default]
+    Hex,
+
     #[cfg(feature = "base58")]
     Asimov,
 
@@ -16,9 +19,6 @@ pub enum PublicKeyEncoding {
 
     #[cfg(feature = "base64")]
     Base64Url,
-
-    #[default]
-    Hex,
 
     #[cfg(feature = "base58")]
     Near,
