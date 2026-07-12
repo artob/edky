@@ -12,6 +12,7 @@ pub const PUBLIC_KEY_LEN: usize = 32;
     feature = "serde",
     serde(try_from = "alloc::string::String", into = "alloc::string::String")
 )]
+#[cfg_attr(feature = "zerocopy", derive(zerocopy::FromBytes, zerocopy::IntoBytes))]
 pub struct PublicKeyBytes(pub(crate) [u8; PUBLIC_KEY_LEN]);
 
 impl Display for PublicKeyBytes {

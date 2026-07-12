@@ -30,7 +30,7 @@ base64 = ["dep:data-encoding"]
 z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
 
 # Interoperability:
-interops = ["bytemuck", "ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso"]
+interops = ["bytemuck", "ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso", "zerocopy"]
 bytemuck = ["dep:bytemuck"]
 ed25519-dalek = ["dep:ed25519-dalek"]
 eloquent = ["dep:eloquent", "alloc"]
@@ -39,6 +39,7 @@ libsql = ["dep:libsql"]
 rocket = ["dep:rocket"]
 serde = ["dep:serde", "alloc"]
 turso = ["dep:turso"]
+zerocopy = ["dep:zerocopy"]
 
 [dependencies]
 derive_more = { version = "2", default-features = false, features = ["display", "from_str"] }
@@ -56,6 +57,7 @@ libsql = { version = "0.9", default-features = false, optional = true }
 rocket = { version = "0.5", default-features = false, optional = true }
 serde = { version = "1", default-features = false, features = ["derive"], optional = true }
 turso = { version = "0.6", default-features = false, optional = true }
+zerocopy = { version = "0.8", default-features = false, features = ["derive"], optional = true }
 
 # Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
 [package.metadata.docs.rs]
