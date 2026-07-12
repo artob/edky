@@ -11,6 +11,9 @@ pub enum PublicKeyEncoding {
     #[cfg(feature = "base58")]
     Asimov,
 
+    #[cfg(feature = "base32z")]
+    Base32z,
+
     #[cfg(feature = "base58")]
     Base58,
 
@@ -29,9 +32,6 @@ pub enum PublicKeyEncoding {
 
     #[cfg(feature = "base64")]
     OpenSsh,
-
-    #[cfg(feature = "z32")]
-    Z32,
 }
 
 impl PublicKeyEncoding {
@@ -39,6 +39,8 @@ impl PublicKeyEncoding {
         Self::Hex,
         #[cfg(feature = "base58")]
         Self::Asimov,
+        #[cfg(feature = "base32z")]
+        Self::Base32z,
         #[cfg(feature = "base58")]
         Self::Base58,
         #[cfg(feature = "base64")]
@@ -51,7 +53,5 @@ impl PublicKeyEncoding {
         Self::Near,
         #[cfg(feature = "base64")]
         Self::OpenSsh,
-        #[cfg(feature = "z32")]
-        Self::Z32,
     ];
 }

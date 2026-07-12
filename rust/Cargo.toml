@@ -25,15 +25,15 @@ std = ["derive_more/std", "alloc"]
 unstable = []
 
 # Encodings:
-encodings = ["asimov", "base16", "base58", "base64", "multibase", "near", "openssh", "z32"]
+encodings = ["asimov", "base16", "base32z", "base58", "base64", "multibase", "near", "openssh"]
 asimov = ["base58"]
 base16 = []
+base32z = ["dep:data-encoding", "dep:data-encoding-macro", "alloc"]
 base58 = ["dep:bs58"]
 base64 = ["dep:data-encoding", "alloc"]
 multibase = ["base58"]
 near = ["base58"]
 openssh = ["base64"]
-z32 = ["dep:data-encoding", "dep:data-encoding-macro", "alloc"]
 
 # Interoperability:
 interops = ["bytemuck", "ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso", "zerocopy"]

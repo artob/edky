@@ -115,8 +115,8 @@ impl PublicKeyBytes {
             #[cfg(feature = "base64")]
             OpenSsh => todo!(), // TODO
 
-            #[cfg(feature = "z32")]
-            Z32 => {
+            #[cfg(feature = "base32z")]
+            Base32z => {
                 data_encoding_macro::new_encoding! {
                     symbols: "ybndrfg8ejkmcpqxot1uwisza345h769",
                 }
@@ -174,8 +174,8 @@ impl PublicKeyBytes {
                 alloc::format!("ssh-ed25519 {}", data_encoding::BASE64.encode(&payload))
             },
 
-            #[cfg(feature = "z32")]
-            Z32 => data_encoding_macro::new_encoding! {
+            #[cfg(feature = "base32z")]
+            Base32z => data_encoding_macro::new_encoding! {
                 symbols: "ybndrfg8ejkmcpqxot1uwisza345h769",
             }
             .encode(self.as_bytes()),
