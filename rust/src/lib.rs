@@ -4,6 +4,7 @@
 
 #![no_std]
 #![allow(unused)]
+#![cfg_attr(not(feature = "bytemuck"), forbid(unsafe_code))]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[cfg(feature = "alloc")]

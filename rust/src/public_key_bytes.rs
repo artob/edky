@@ -135,10 +135,23 @@ impl From<&alloc::vec::Vec<u8>> for PublicKeyBytes {
     }
 }
 
+#[cfg(feature = "bytemuck")]
 include!("public_key_bytes/bytemuck.rs");
+
+#[cfg(feature = "ed25519-dalek")]
 include!("public_key_bytes/ed25519-dalek.rs");
+
+#[cfg(feature = "eloquent")]
 include!("public_key_bytes/eloquent.rs");
+
+#[cfg(feature = "iroh")]
 include!("public_key_bytes/iroh.rs");
+
+#[cfg(feature = "libsql")]
 include!("public_key_bytes/libsql.rs");
+
+#[cfg(feature = "rocket")]
 include!("public_key_bytes/rocket.rs");
+
+#[cfg(feature = "turso")]
 include!("public_key_bytes/turso.rs");

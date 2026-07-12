@@ -1,6 +1,5 @@
 // This is free and unencumbered software released into the public domain.
 
-#[cfg(feature = "rocket")]
 impl<'r> rocket::request::FromParam<'r> for PublicKeyBytes {
     type Error = ParsePublicKeyError;
 
