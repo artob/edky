@@ -25,8 +25,9 @@ std = ["derive_more/std", "alloc"]
 unstable = []
 
 # Encodings:
-encodings = ["base58", "base64", "z32"]
+encodings = ["asimov", "base16", "base58", "base64", "near", "openssh", "z32"]
 asimov = ["base58"]
+base16 = []
 base58 = ["dep:bs58"]
 base64 = ["dep:data-encoding"]
 near = ["base58"]

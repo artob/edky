@@ -22,6 +22,7 @@
 
 ## ✨ Features
 
+- Supports Ed25119 public keys encoded as Base16, Base58, Base64, and Z32.
 - 100% pure and safe Rust with minimal dependencies and no bloat.
 - Designed for `no_std` environment compatibility from the get-go.
 - Supports opting out of any feature using comprehensive [feature flags].
@@ -62,12 +63,40 @@ edky = { version = "0", default-features = false, features = ["alloc"] }
 ### Importing the Library
 
 ```rust
-use edky::*;
+use edky::{PublicKeyBytes, PublicKeyEncoding};
 ```
 
 ## 📚 Reference
 
 [docs.rs/edky](https://docs.rs/edky)
+
+### Feature Flags
+
+#### Encodings
+
+| Feature         | Example Public Key |
+| :-------------- | :----------------- |
+| `asimov`        | ⒶYFVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+| `base16`        | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
+| `base58`        | FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+| `base64`        | 11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=
+| `near`          | ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+| `openssh`       | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea
+| `z32`           | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
+
+#### Interoperability
+
+| Feature         | Version | Summary |
+| :-------------- | :------ | :------ |
+| `bytemuck`      | 1.25    | Implements `bytemuck::{Pod, Zeroable}`
+| `ed25519-dalek` | 3.0     | Implements `From<ed25519_dalek::VerifyingKey>`
+| `eloquent`      | 2.1     | Implements `eloquent::ToSql`
+| `iroh`          | 1.0     | Implements `From<iroh::{PublicKey, EndpointAddr}>`
+| `libsql`        | 0.9     | Implements `libsql::params::IntoValue`
+| `rocket`        | 0.5     | Implements `rocket::request::FromParam`
+| `serde`         | 1.0     | Derives `serde::{Serialize, Deserialize}`
+| `turso`         | 0.6     | Implements `turso::IntoValue`
+| `zerocopy`      | 0.8     | Derives `zerocopy::{FromBytes, IntoBytes}`
 
 ## 👨‍💻 Development
 
