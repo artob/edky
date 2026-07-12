@@ -1,6 +1,6 @@
 // This is free and unencumbered software released into the public domain.
 
-use super::ParsePublicKeyError;
+use super::{ParsePublicKeyError, PublicKeyEncoding};
 use core::{fmt::Display, ops::Deref, str::FromStr};
 
 pub const PUBLIC_KEY_LEN: usize = 32;
@@ -56,6 +56,51 @@ impl FromStr for PublicKeyBytes {
 
 impl PublicKeyBytes {
     pub const ZERO: Self = Self([0u8; PUBLIC_KEY_LEN]);
+
+    #[cfg(feature = "alloc")]
+    pub fn encode(&self, encoding: PublicKeyEncoding) -> Option<alloc::string::String> {
+        use PublicKeyEncoding::*;
+        Some(match encoding {
+            Hex => alloc::string::ToString::to_string(self),
+
+            #[cfg(feature = "base58")]
+            Asimov => {
+                alloc::format!("ⒶY{}", bs58::encode(self.0).into_string())
+            },
+
+            #[cfg(feature = "base58")]
+            Base58 => bs58::encode(self.0).into_string(),
+
+            #[cfg(feature = "base64")]
+            Base64 => data_encoding::BASE64.encode(self.as_bytes()),
+
+            #[cfg(feature = "base64")]
+            Base64Url => data_encoding::BASE64URL_NOPAD.encode(self.as_bytes()),
+
+            #[cfg(feature = "base58")]
+            Near => {
+                alloc::format!("ed25519:{}", bs58::encode(self.0).into_string())
+            },
+
+            #[cfg(feature = "base64")]
+            OpenSsh => {
+                let mut payload = alloc::vec::Vec::new();
+                payload.extend_from_slice(&(b"ssh-ed25519".len() as u32).to_be_bytes());
+                payload.extend_from_slice(b"ssh-ed25519");
+                payload.extend_from_slice(&(PUBLIC_KEY_LEN as u32).to_be_bytes());
+                payload.extend_from_slice(self.as_bytes());
+                alloc::format!("ssh-ed25519 {}", data_encoding::BASE64.encode(&payload))
+            },
+
+            #[cfg(feature = "z32")]
+            Z32 => data_encoding_macro::new_encoding! {
+                symbols: "ybndrfg8ejkmcpqxot1uwisza345h769",
+            }
+            .encode(self.as_bytes()),
+
+            _ => return None, // not supported
+        })
+    }
 
     pub fn as_slice(&self) -> &[u8] {
         self.0.as_slice()
@@ -121,8 +166,7 @@ impl TryFrom<alloc::string::String> for PublicKeyBytes {
 #[cfg(feature = "alloc")]
 impl From<PublicKeyBytes> for alloc::string::String {
     fn from(input: PublicKeyBytes) -> alloc::string::String {
-        use alloc::string::ToString;
-        input.to_string()
+        alloc::string::ToString::to_string(&input)
     }
 }
 
