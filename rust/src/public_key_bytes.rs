@@ -88,6 +88,24 @@ impl PublicKeyBytes {
                 Self(buffer)
             },
 
+            #[cfg(feature = "multibase")]
+            Multibase => {
+                // See: https://github.com/multiformats/multibase/blob/master/multibase.csv
+                // See: https://github.com/multiformats/multicodec/blob/master/table.csv
+                let Some(input) = input.strip_prefix("z") else {
+                    return Err(ParsePublicKeyError::InvalidPrefix);
+                };
+                let mut buffer = [0u8; 34];
+                bs58::decode(input).onto(&mut buffer)?;
+                if buffer[0] != 0xed {
+                    return Err(ParsePublicKeyError::InvalidPrefix);
+                }
+                if buffer[1] != 0x01 {
+                    return Err(ParsePublicKeyError::InvalidPrefix);
+                }
+                Self::from_slice(&buffer[2..])?
+            },
+
             #[cfg(feature = "base58")]
             Near => input
                 .strip_prefix("ed25519:")
@@ -129,6 +147,17 @@ impl PublicKeyBytes {
 
             #[cfg(feature = "base64")]
             Base64Url => data_encoding::BASE64URL_NOPAD.encode(self.as_bytes()),
+
+            #[cfg(feature = "multibase")]
+            Multibase => {
+                // See: https://github.com/multiformats/multibase/blob/master/multibase.csv
+                // See: https://github.com/multiformats/multicodec/blob/master/table.csv
+                let mut buffer = [0u8; 34];
+                buffer[0] = 0xed;
+                buffer[1] = 0x01;
+                buffer[2..].copy_from_slice(&self.0);
+                alloc::format!("z{}", bs58::encode(buffer).into_string())
+            },
 
             #[cfg(feature = "base58")]
             Near => {

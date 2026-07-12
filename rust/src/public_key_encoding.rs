@@ -20,6 +20,10 @@ pub enum PublicKeyEncoding {
     #[cfg(feature = "base64")]
     Base64Url,
 
+    /// See: <https://github.com/multiformats/multibase>
+    #[cfg(feature = "multibase")]
+    Multibase,
+
     #[cfg(feature = "base58")]
     Near,
 
@@ -41,6 +45,8 @@ impl PublicKeyEncoding {
         Self::Base64,
         #[cfg(feature = "base64")]
         Self::Base64Url,
+        #[cfg(feature = "multibase")]
+        Self::Multibase,
         #[cfg(feature = "base58")]
         Self::Near,
         #[cfg(feature = "base64")]

@@ -6,15 +6,23 @@ use thiserror::Error;
 #[derive(Clone, Copy, Debug, Eq, Error, PartialEq)]
 pub enum ParsePublicKeyError {
     /// The string was not exactly 64 characters long.
-    #[error("hexadecimal public keys must be exactly 64 characters long")]
+    #[error("invalid public key length")]
     InvalidLength(usize),
 
+    /// The string did not start with the expected prefix.
+    #[error("invalid public key prefix")]
+    InvalidPrefix,
+
+    /// The string did not end with the expected suffix.
+    #[error("invalid public key suffix")]
+    InvalidSuffix,
+
     /// The string contained non-ASCII bytes.
-    #[error("hexadecimal public keys cannot contain non-ASCII characters")]
+    #[error("invalid public key character")]
     InvalidChars,
 
     /// The string contained non-hexadecimal characters.
-    #[error("hexadecimal public keys can only contain characters in [0-9a-fA-F]")]
+    #[error("invalid public key digit")]
     InvalidDigit(usize),
 }
 

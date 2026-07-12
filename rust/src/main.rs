@@ -75,6 +75,12 @@ pub fn main() -> Result<(), SysexitsError> {
     if options.flags.debug {}
 
     match options.command.unwrap() {
+        Command::List {} => {
+            for encoding in PublicKeyEncoding::VARIANTS {
+                println!("{}", encoding.to_string().to_lowercase());
+            }
+            Ok(())
+        },
         Command::Convert { from, to, inputs } => {
             for input in inputs {
                 let key = PublicKeyBytes::decode(from, input)?;
@@ -90,12 +96,6 @@ pub fn main() -> Result<(), SysexitsError> {
                 let _ = PublicKeyBytes::decode(from, input)?;
             }
             println!("OK");
-            Ok(())
-        },
-        Command::List {} => {
-            for encoding in PublicKeyEncoding::VARIANTS {
-                println!("{}", encoding.to_string().to_lowercase());
-            }
             Ok(())
         },
     }

@@ -80,6 +80,7 @@ use edky::{PublicKeyBytes, PublicKeyEncoding};
 | `base16`        | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
 | `base58`        | FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 | `base64`        | 11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=
+| `multibase`     | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw
 | `near`          | ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 | `openssh`       | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea
 | `z32`           | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
