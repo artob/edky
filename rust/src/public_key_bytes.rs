@@ -155,6 +155,15 @@ impl PublicKeyBytes {
         })
     }
 
+    pub fn from_slice(slice: &[u8]) -> Result<Self, ParsePublicKeyError> {
+        if slice.len() != PUBLIC_KEY_LEN {
+            return Err(ParsePublicKeyError::InvalidLength(slice.len()));
+        }
+        let mut buffer = [0u8; PUBLIC_KEY_LEN];
+        buffer.copy_from_slice(slice);
+        Ok(Self(buffer))
+    }
+
     pub fn as_slice(&self) -> &[u8] {
         self.0.as_slice()
     }
