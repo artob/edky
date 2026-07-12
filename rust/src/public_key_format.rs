@@ -2,9 +2,21 @@
 
 use super::PublicKeyEncoding;
 
-#[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
-pub struct PublicKeyFormat {
-    pub name: &'static str,
-    pub encoding: PublicKeyEncoding,
-    pub prefix: Option<&'static str>,
+#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+pub enum PublicKeyFormat {
+    Entry {
+        name: &'static str,
+        encoding: PublicKeyEncoding,
+        prefix: Option<&'static str>,
+    },
+    Alias(&'static str, &'static str),
+}
+
+impl PublicKeyFormat {
+    pub fn name(&self) -> &str {
+        match self {
+            PublicKeyFormat::Entry { name, .. } => name,
+            PublicKeyFormat::Alias(name, ..) => name,
+        }
+    }
 }

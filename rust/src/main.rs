@@ -77,7 +77,7 @@ pub fn main() -> Result<(), SysexitsError> {
     match options.command.unwrap() {
         Command::List {} => {
             for format in PUBLIC_KEY_FORMATS {
-                println!("{}", format.name);
+                println!("{}", format.name());
             }
             Ok(())
         },
