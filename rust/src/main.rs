@@ -31,8 +31,18 @@ enum Command {
         #[clap(long, short, default_value = "hex")]
         to: PublicKeyEncoding,
 
-        /// The input string to convert
-        input: String,
+        /// The input strings to convert
+        inputs: Vec<String>,
+    },
+
+    /// Parse Ed25519 public keys in various encoding formats
+    Parse {
+        /// The input encoding
+        #[clap(long, short, default_value = "hex")]
+        from: PublicKeyEncoding,
+
+        /// The input strings to convert
+        inputs: Vec<String>,
     },
 }
 
@@ -62,12 +72,21 @@ pub fn main() -> Result<(), SysexitsError> {
     if options.flags.debug {}
 
     match options.command.unwrap() {
-        Command::Convert { from, to, input } => {
-            let key = PublicKeyBytes::decode(from, input)?;
-            let Some(encoded) = key.encode(to) else {
-                return Err(EX_CONFIG);
-            };
-            println!("{}", encoded);
+        Command::Convert { from, to, inputs } => {
+            for input in inputs {
+                let key = PublicKeyBytes::decode(from, input)?;
+                let Some(encoded) = key.encode(to) else {
+                    return Err(EX_CONFIG);
+                };
+                println!("{}", encoded);
+            }
+            Ok(())
+        },
+        Command::Parse { from, inputs } => {
+            for input in inputs {
+                let _ = PublicKeyBytes::decode(from, input)?;
+            }
+            println!("OK");
             Ok(())
         },
     }
