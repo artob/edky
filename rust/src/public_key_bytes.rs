@@ -65,7 +65,7 @@ impl PublicKeyBytes {
         let input = input.as_ref();
         let mut buffer = [0u8; 32];
         Ok(match encoding {
-            Hex => input.parse::<Self>()?,
+            Base16 => input.parse::<Self>()?,
 
             #[cfg(feature = "base58")]
             Asimov => input.strip_prefix("ⒶY").unwrap_or(input).parse::<Self>()?,
@@ -132,7 +132,7 @@ impl PublicKeyBytes {
     pub fn encode(&self, encoding: PublicKeyEncoding) -> Option<alloc::string::String> {
         use PublicKeyEncoding::*;
         Some(match encoding {
-            Hex => alloc::string::ToString::to_string(self),
+            Base16 => alloc::string::ToString::to_string(self),
 
             #[cfg(feature = "base58")]
             Asimov => {

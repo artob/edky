@@ -5,7 +5,7 @@ use clientele::{
     SysexitsError::{self, *},
     crates::clap::{Parser, Subcommand},
 };
-use edky::{PUBLIC_KEY_ENCODINGS, PublicKeyBytes, PublicKeyEncoding};
+use edky::{PUBLIC_KEY_FORMATS, PublicKeyBytes, PublicKeyEncoding};
 
 /// Edky command-line interface (CLI)
 #[derive(Debug, Parser)]
@@ -76,8 +76,8 @@ pub fn main() -> Result<(), SysexitsError> {
 
     match options.command.unwrap() {
         Command::List {} => {
-            for (encoding, ..) in PUBLIC_KEY_ENCODINGS {
-                println!("{}", encoding.to_string().to_lowercase());
+            for format in PUBLIC_KEY_FORMATS {
+                println!("{}", format.name);
             }
             Ok(())
         },

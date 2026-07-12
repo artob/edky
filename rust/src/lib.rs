@@ -26,5 +26,8 @@ pub use public_key_bytes::*;
 mod public_key_encoding;
 pub use public_key_encoding::*;
 
-mod public_key_encodings;
-pub use public_key_encodings::*;
+mod public_key_format;
+pub use public_key_format::*;
+
+mod public_key_formats;
+pub use public_key_formats::*;
