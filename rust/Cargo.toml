@@ -26,8 +26,11 @@ unstable = []
 
 # Encodings:
 encodings = ["base58", "base64", "z32"]
+asimov = ["base58"]
 base58 = ["dep:bs58"]
 base64 = ["dep:data-encoding"]
+near = ["base58"]
+openssh = ["base64"]
 z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
 
 # Interoperability:

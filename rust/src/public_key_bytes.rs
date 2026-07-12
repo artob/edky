@@ -57,6 +57,59 @@ impl FromStr for PublicKeyBytes {
 impl PublicKeyBytes {
     pub const ZERO: Self = Self([0u8; PUBLIC_KEY_LEN]);
 
+    pub fn decode(
+        encoding: PublicKeyEncoding,
+        input: impl AsRef<str>,
+    ) -> Result<Self, ParsePublicKeyError> {
+        use PublicKeyEncoding::*;
+        let input = input.as_ref();
+        let mut buffer = [0u8; 32];
+        Ok(match encoding {
+            Hex => input.parse::<Self>()?,
+
+            #[cfg(feature = "base58")]
+            Asimov => input.strip_prefix("ⒶY").unwrap_or(input).parse::<Self>()?,
+
+            #[cfg(feature = "base58")]
+            Base58 => {
+                bs58::decode(input).onto(&mut buffer)?;
+                Self(buffer)
+            },
+
+            #[cfg(feature = "base64")]
+            Base64 => {
+                data_encoding::BASE64.decode_mut(input.as_bytes(), &mut buffer)?;
+                Self(buffer)
+            },
+
+            #[cfg(feature = "base64")]
+            Base64Url => {
+                data_encoding::BASE64URL_NOPAD.decode_mut(input.as_bytes(), &mut buffer)?;
+                Self(buffer)
+            },
+
+            #[cfg(feature = "base58")]
+            Near => input
+                .strip_prefix("ed25519:")
+                .unwrap_or(input)
+                .parse::<Self>()?,
+
+            #[cfg(feature = "base64")]
+            OpenSsh => todo!(), // TODO
+
+            #[cfg(feature = "z32")]
+            Z32 => {
+                data_encoding_macro::new_encoding! {
+                    symbols: "ybndrfg8ejkmcpqxot1uwisza345h769",
+                }
+                .decode_mut(input.as_bytes(), &mut buffer)?;
+                Self(buffer)
+            },
+
+            _ => todo!(), // TODO
+        })
+    }
+
     #[cfg(feature = "alloc")]
     pub fn encode(&self, encoding: PublicKeyEncoding) -> Option<alloc::string::String> {
         use PublicKeyEncoding::*;

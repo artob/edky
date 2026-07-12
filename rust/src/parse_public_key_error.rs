@@ -27,9 +27,42 @@ where
     }
 }
 
+#[cfg(feature = "base58")]
+impl From<bs58::decode::Error> for ParsePublicKeyError {
+    fn from(input: bs58::decode::Error) -> Self {
+        #![allow(non_snake_case)]
+        use bs58::decode::Error::*;
+        match input {
+            BufferTooSmall => Self::InvalidLength(0),
+            InvalidCharacter => Self::InvalidDigit(0),
+            NonAsciiCharacter => Self::InvalidChars,
+        }
+    }
+}
+
+#[cfg(feature = "base64")]
+impl From<data_encoding::DecodeError> for ParsePublicKeyError {
+    fn from(input: data_encoding::DecodeError) -> Self {
+        use data_encoding::DecodeKind::*;
+        match input.kind {
+            Length => Self::InvalidLength(input.position),
+            Symbol => Self::InvalidDigit(input.position),
+            Trailing => Self::InvalidChars,
+            Padding => Self::InvalidLength(input.position),
+        }
+    }
+}
+
+#[cfg(feature = "base64")]
+impl From<data_encoding::DecodePartial> for ParsePublicKeyError {
+    fn from(input: data_encoding::DecodePartial) -> Self {
+        input.error.into()
+    }
+}
+
 #[cfg(feature = "clientele")]
 impl From<ParsePublicKeyError> for clientele::SysexitsError {
-    fn from(error: ParsePublicKeyError) -> Self {
+    fn from(_: ParsePublicKeyError) -> Self {
         clientele::SysexitsError::EX_DATAERR
     }
 }

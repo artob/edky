@@ -48,7 +48,7 @@ pub fn main() -> Result<(), SysexitsError> {
 
     // Print the program version, if requested:
     if options.flags.version {
-        println!("Edky {}", env!("CARGO_PKG_VERSION"));
+        println!("edky {}", env!("CARGO_PKG_VERSION"));
         return Ok(());
     }
 
@@ -62,8 +62,8 @@ pub fn main() -> Result<(), SysexitsError> {
     if options.flags.debug {}
 
     match options.command.unwrap() {
-        Command::Convert { from: _, to, input } => {
-            let key: PublicKeyBytes = input.parse()?;
+        Command::Convert { from, to, input } => {
+            let key = PublicKeyBytes::decode(from, input)?;
             let Some(encoded) = key.encode(to) else {
                 return Err(EX_CONFIG);
             };
