@@ -21,6 +21,9 @@ struct Options {
 
 #[derive(Debug, Subcommand)]
 enum Command {
+    /// List the supported public key encoding formats
+    List {},
+
     /// Convert Ed25519 public keys between various encoding formats
     Convert {
         /// The input encoding
@@ -87,6 +90,12 @@ pub fn main() -> Result<(), SysexitsError> {
                 let _ = PublicKeyBytes::decode(from, input)?;
             }
             println!("OK");
+            Ok(())
+        },
+        Command::List {} => {
+            for encoding in PublicKeyEncoding::VARIANTS {
+                println!("{}", encoding.to_string().to_lowercase());
+            }
             Ok(())
         },
     }

@@ -29,3 +29,23 @@ pub enum PublicKeyEncoding {
     #[cfg(feature = "z32")]
     Z32,
 }
+
+impl PublicKeyEncoding {
+    pub const VARIANTS: &'static [Self] = &[
+        Self::Hex,
+        #[cfg(feature = "base58")]
+        Self::Asimov,
+        #[cfg(feature = "base58")]
+        Self::Base58,
+        #[cfg(feature = "base64")]
+        Self::Base64,
+        #[cfg(feature = "base64")]
+        Self::Base64Url,
+        #[cfg(feature = "base58")]
+        Self::Near,
+        #[cfg(feature = "base64")]
+        Self::OpenSsh,
+        #[cfg(feature = "z32")]
+        Self::Z32,
+    ];
+}
