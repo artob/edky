@@ -20,6 +20,7 @@ publish = true
 default = ["all", "std"]
 all = ["encodings"]
 alloc = ["bs58?/alloc", "ed25519-dalek?/alloc", "serde?/alloc"]
+cli = ["clientele", "dep:clap"]
 std = ["derive_more/std", "alloc"]
 unstable = []
 
@@ -32,6 +33,7 @@ z32 = ["dep:data-encoding", "dep:data-encoding-macro"]
 # Interoperability:
 interops = ["bytemuck", "ed25519-dalek", "eloquent", "iroh", "libsql", "rocket", "serde", "turso", "zerocopy"]
 bytemuck = ["dep:bytemuck"]
+clientele = ["dep:clientele"]
 ed25519-dalek = ["dep:ed25519-dalek"]
 eloquent = ["dep:eloquent", "alloc"]
 iroh = ["dep:iroh"]
@@ -59,7 +61,16 @@ serde = { version = "1", default-features = false, features = ["derive"], option
 turso = { version = "0.6", default-features = false, optional = true }
 zerocopy = { version = "0.8", default-features = false, features = ["derive"], optional = true }
 
+# CLI:
+clap = { version = "4.5", default-features = false, optional = true }
+clientele = { version = "0.3.8", features = [], optional = true }
+
 # Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
+
+[[bin]]
+name = "edky"
+path = "src/main.rs"
+required-features = ["cli"]

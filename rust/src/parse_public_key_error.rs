@@ -17,3 +17,19 @@ pub enum ParsePublicKeyError {
     #[error("hexadecimal public keys can only contain characters in [0-9a-fA-F]")]
     InvalidDigit(usize),
 }
+
+impl<T> From<&T> for ParsePublicKeyError
+where
+    T: Clone + Into<Self>,
+{
+    fn from(t: &T) -> Self {
+        t.clone().into()
+    }
+}
+
+#[cfg(feature = "clientele")]
+impl From<ParsePublicKeyError> for clientele::SysexitsError {
+    fn from(error: ParsePublicKeyError) -> Self {
+        clientele::SysexitsError::EX_DATAERR
+    }
+}
