@@ -69,7 +69,13 @@ impl PublicKeyBytes {
             Base16 => input.parse::<Self>()?,
 
             #[cfg(feature = "base58")]
-            Asimov => input.strip_prefix("ⒶY").unwrap_or(input).parse::<Self>()?,
+            Asimov => {
+                let Some(input) = input.strip_prefix("ⒶY") else {
+                    return Err(InvalidPrefix);
+                };
+                bs58::decode(input).onto(&mut buffer)?;
+                Self(buffer)
+            },
 
             #[cfg(feature = "base58")]
             Base58 => {
