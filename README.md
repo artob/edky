@@ -7,7 +7,7 @@
 [![Package on PyPI](https://img.shields.io/pypi/v/edky)](https://pypi.org/project/edky)
 [![Package on RubyGems](https://img.shields.io/gem/v/edky)](https://rubygems.org/gems/edky)
 
-**Edky (pronounced *ed-key*) converts Ed25519 public keys between various
+**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
 encoding formats.**
 
 ## ✨ Features
@@ -77,3 +77,5 @@ git clone https://github.com/artob/edky.git
 [Pub.dev]: https://pub.dev/packages/edky
 [PyPI]: https://pypi.org/project/edky
 [RubyGems]: https://rubygems.org/gems/edky
+
+[Ed25519]: https://en.wikipedia.org/wiki/Ed25519

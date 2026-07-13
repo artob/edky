@@ -1,6 +1,6 @@
 # Edky.rb: Edky for Ruby
 
-**Edky (pronounced *ed-key*) converts Ed25519 public keys between various
+**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
 encoding formats.**
 
 ## ✨ Features
@@ -17,3 +17,5 @@ encoding formats.**
 [![Share on Hacker News](https://img.shields.io/badge/share%20on-hn-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u=https://github.com/artob/edky&t=Edky)
 [![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/artob/edky)
 [![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/artob/edky)
+
+[Ed25519]: https://en.wikipedia.org/wiki/Ed25519

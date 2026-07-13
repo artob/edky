@@ -5,7 +5,7 @@
 [![Package](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
 [![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
 
-**Edky (pronounced *ed-key*) converts Ed25519 public keys between various
+**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
 encoding formats.**
 
 <sub>
@@ -23,7 +23,7 @@ encoding formats.**
 
 ## ✨ Features
 
-- Available both as the command-line tool `edky` and as a Rust library.
+- Available both as the command-line tool [`edky`] and as a Rust library.
 - Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
 - Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
 - 100% pure and safe Rust with minimal dependencies and no bloat.
@@ -239,4 +239,6 @@ git clone https://github.com/artob/edky.git
 [feature flags]: https://docs.rs/crate/edky/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
+[Ed25519]: https://en.wikipedia.org/wiki/Ed25519
 [Rust]: https://rust-lang.org
+[`edky`]: #command-line-interface
