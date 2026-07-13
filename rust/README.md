@@ -117,7 +117,8 @@ println!("{:?}", key.encode(Multibase));
 
 ### Command-Line Interface
 
-```
+```console
+$ edky
 Edky converts Ed25519 public keys between various encoding formats
 
 Usage: edky [OPTIONS] [COMMAND]
@@ -139,7 +140,8 @@ Options:
 
 #### `edky list`
 
-```
+```console
+$ edky list --help
 List the supported public key encoding formats
 
 Usage: edky list [OPTIONS]
@@ -153,7 +155,8 @@ Options:
 
 #### `edky convert`
 
-```
+```console
+$ edky convert --help
 Convert Ed25519 public keys between various encoding formats
 
 Usage: edky convert [OPTIONS] [INPUTS]...
@@ -172,7 +175,8 @@ Options:
 
 #### `edky parse`
 
-```
+```console
+$ edky parse --help
 Parse Ed25519 public keys in various encoding formats
 
 Usage: edky parse [OPTIONS] [INPUTS]...
