@@ -12,11 +12,11 @@ encoding formats.**
 
 ## ✨ Features
 
-- Available both as the command-line tool `edky` and as a software library.
+- Available both as the command-line tool [`edky`] and as a polyglot library.
 - Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
 - Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
-- Cuts red tape: 100% free and unencumbered public domain software.
 - Polyglot software available for Dart, Python, Ruby, Rust, and TypeScript.
+- Cuts red tape: 100% free and unencumbered public domain software.
 
 ## ⬇️ Installation
 
@@ -79,3 +79,4 @@ git clone https://github.com/artob/edky.git
 [RubyGems]: https://rubygems.org/gems/edky
 
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
+[`edky`]: https://github.com/artob/edky/tree/master/rust#command-line-interface
