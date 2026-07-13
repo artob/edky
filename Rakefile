@@ -1,12 +1,22 @@
 abort("Expected Ruby 3.4+, but got #{RUBY_VERSION}.") if RUBY_VERSION < '3.4.0'
 
-require 'csv'  # `gem install csv`
+require 'csv'   # `gem install csv`
+require 'json'  # `gem install json`
+require 'yaml'  # `gem install yaml`
 
 SAMPLES = CSV.table('samples.csv')
   .inject({}) { |hash, row| hash[row[:format].to_sym] = row[:sample]; hash }
   .freeze
 
-task :default => 'samples:markdown'
+task :default => %w[samples.json samples.yaml]
+
+file 'samples.json' => 'samples.csv' do |t|
+  File.open(t.name, 'w') { |f| f.write(JSON.pretty_generate(SAMPLES)); f.puts }
+end
+
+file 'samples.yaml' => 'samples.csv' do |t|
+  File.open(t.name, 'w') { |f| f.write(SAMPLES.transform_keys(&:to_s).to_yaml) }
+end
 
 namespace :samples do
   desc "Output the samples table for the README"
@@ -26,13 +36,11 @@ namespace :samples do
 
   desc "Output the samples table in JSON formt"
   task json: %w[samples.csv] do |t|
-    require 'json'  # `gem install json`
     puts JSON.pretty_generate(SAMPLES)
   end
 
   desc "Output the samples table in YAML format"
   task yaml: %w[samples.csv] do |t|
-    require 'yaml'  # `gem install yaml`
     puts SAMPLES.transform_keys(&:to_s).to_yaml
   end
 end
