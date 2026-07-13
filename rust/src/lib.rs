@@ -13,7 +13,7 @@ extern crate alloc;
 #[cfg(feature = "std")]
 extern crate std;
 
-#[doc = include_str!("../../README.md")]
+#[doc = include_str!("../README.md")]
 #[cfg(doctest)]
 pub struct ReadmeDoctests;
 
@@ -31,3 +31,10 @@ pub use public_key_format::*;
 
 mod public_key_formats;
 pub use public_key_formats::*;
+
+pub fn decode(
+    encoding: PublicKeyEncoding,
+    input: impl AsRef<str>,
+) -> Result<PublicKeyBytes, ParsePublicKeyError> {
+    PublicKeyBytes::decode(encoding, input)
+}

@@ -7,7 +7,8 @@
 [![Package on PyPI](https://img.shields.io/pypi/v/edky)](https://pypi.org/project/edky)
 [![Package on RubyGems](https://img.shields.io/gem/v/edky)](https://rubygems.org/gems/edky)
 
-**Edky converts Ed25519 public keys between various encoding formats.**
+**Edky (pronounced *ed-key*) converts Ed25519 public keys between various
+encoding formats.**
 
 ## ⬇️ Installation
 

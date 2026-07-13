@@ -5,7 +5,8 @@
 [![Package](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
 [![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
 
-**Edky converts Ed25519 public keys between various encoding formats.**
+**Edky (pronounced *ed-key*) converts Ed25519 public keys between various
+encoding formats.**
 
 <sub>
 
@@ -23,8 +24,9 @@
 ## ✨ Features
 
 - Supports Ed25119 public keys encoded as Base16, Base58, Base64, and Z32.
+- Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, and OpenSSH.
 - 100% pure and safe Rust with minimal dependencies and no bloat.
-- Designed for `no_std` environment compatibility from the get-go.
+- Designed for `#![no_std]` environment compatibility from the get-go.
 - Supports opting out of any feature using comprehensive [feature flags].
 - Adheres to the Rust API Guidelines in its [naming conventions].
 - Cuts red tape: 100% free and unencumbered public domain software.
@@ -36,13 +38,19 @@
 
 ## ⬇️ Installation
 
-### Installation via Cargo
+### Installation of the CLI via Cargo
+
+```bash
+cargo install edky --features=cli
+```
+
+### Installation of the Library via Cargo
 
 ```bash
 cargo add edky
 ```
 
-### Installation in `Cargo.toml`
+### Installation of the Library in `Cargo.toml`
 
 Enable all default features:
 
@@ -60,10 +68,46 @@ edky = { version = "0", default-features = false, features = ["alloc"] }
 
 ## 👉 Examples
 
+### Converting Ed25119 Public Keys via the CLI
+
+```bash
+edky convert -f near -t openssh ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+```
+
 ### Importing the Library
 
 ```rust
 use edky::{PublicKeyBytes, PublicKeyEncoding};
+```
+
+### Decoding Ed25519 Public Keys
+
+```rust,no_run
+# fn main() -> Result<(), Box<dyn core::error::Error>> {
+use edky::{decode, PublicKeyEncoding::*};
+
+let key = decode(Asimov, "ⒶYFVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z")?;
+let key = decode(Base16, "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a")?;
+let key = decode(Base32z, "47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy")?;
+let key = decode(Base58, "FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z")?;
+let key = decode(Base64, "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=")?;
+let key = decode(Base64Url, "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo")?;
+let key = decode(Multibase, "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw")?;
+let key = decode(Near, "ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z")?;
+let key = decode(OpenSsh, "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea")?;
+# Ok(()) }
+```
+
+### Encoding Ed25519 Public Keys
+
+```rust
+# fn main() -> Result<(), Box<dyn core::error::Error>> {
+use edky::{PublicKeyBytes, PublicKeyEncoding::*};
+
+let key = PublicKeyBytes::decode(Base16, "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a")?;
+
+println!("{:?}", key.encode(Multibase));
+# Ok(()) }
 ```
 
 ## 📚 Reference
