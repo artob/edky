@@ -70,7 +70,8 @@ impl From<data_encoding::DecodePartial> for ParsePublicKeyError {
 
 #[cfg(feature = "clientele")]
 impl From<ParsePublicKeyError> for clientele::SysexitsError {
-    fn from(_: ParsePublicKeyError) -> Self {
+    fn from(input: ParsePublicKeyError) -> Self {
+        std::eprintln!("edky: {}", input); // TODO
         clientele::SysexitsError::EX_DATAERR
     }
 }
