@@ -1,0 +1,24 @@
+abort("Expected Ruby 3.4+, but got #{RUBY_VERSION}.") if RUBY_VERSION < '3.4.0'
+
+require 'csv'  # `gem install csv`
+
+def edky(*args) = `cargo run --features=cli -- #{args.join(' ')}`.split("\n")
+
+FORMATS = edky(:list).map(&:to_sym).freeze
+SAMPLES = CSV.table('../samples.csv')
+  .inject({}) { |hash, row| hash[row[:format].to_sym] = row[:sample]; hash }
+
+task :default => :check
+
+desc "Check all #{FORMATS.size}×#{FORMATS.size}=#{FORMATS.size**2} format conversions"
+task check: %w[../samples.csv] do |t|
+  FORMATS.each do |from|
+    FORMATS.each do |to|
+      input = SAMPLES[from]
+      args = [:convert, "--from", from, "--to", to, input]
+      output = edky(*args)
+      error = !$?.success?
+      p [from, to, !error, *output]  # for `rake check 2>/dev/null`
+    end
+  end
+end
