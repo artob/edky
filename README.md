@@ -10,6 +10,14 @@
 **Edky (pronounced *ed-key*) converts Ed25519 public keys between various
 encoding formats.**
 
+## ✨ Features
+
+- Available both as the command-line tool `edky` and as a software library.
+- Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
+- Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
+- Cuts red tape: 100% free and unencumbered public domain software.
+- Polyglot software available for Dart, Python, Ruby, Rust, and TypeScript.
+
 ## ⬇️ Installation
 
 ### Installation from [Crates.io]

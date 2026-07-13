@@ -1,6 +1,14 @@
 # Edky.rb: Edky for Ruby
 
-**Convert Ed25519 public keys between various encoding formats.**
+**Edky (pronounced *ed-key*) converts Ed25519 public keys between various
+encoding formats.**
+
+## ✨ Features
+
+- Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
+- Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
+- Cuts red tape: 100% free and unencumbered public domain software.
+- Polyglot software also available for Dart, Python, Rust, and TypeScript.
 
 ---
 

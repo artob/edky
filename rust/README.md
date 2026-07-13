@@ -23,8 +23,9 @@ encoding formats.**
 
 ## ✨ Features
 
-- Supports Ed25119 public keys encoded as Base16, Base58, Base64, and Z32.
-- Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, and OpenSSH.
+- Available both as the command-line tool `edky` and as a Rust library.
+- Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
+- Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
 - 100% pure and safe Rust with minimal dependencies and no bloat.
 - Designed for `#![no_std]` environment compatibility from the get-go.
 - Supports opting out of any feature using comprehensive [feature flags].
@@ -125,6 +126,11 @@ println!("{:?}", key.encode(Multibase));
 | `base32z`       | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
 | `base58`        | FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 | `base64`        | 11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=
+| `base64url`     | 11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo
+| `hex`           | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
+| `ipfs`          | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw
+| `iroh`          | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
+| `libp2p`        | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw
 | `multibase`     | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw
 | `near`          | ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 | `openssh`       | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea
