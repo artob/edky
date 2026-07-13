@@ -30,8 +30,9 @@ pub fn decode(
 
         #[cfg(feature = "base64")]
         Base64 => {
+            let mut buffer = [0u8; 33]; // with extra padding byte
             data_encoding::BASE64.decode_mut(input.as_bytes(), &mut buffer)?;
-            PublicKeyBytes(buffer)
+            PublicKeyBytes::from_slice(&buffer[..32]).unwrap()
         },
 
         #[cfg(feature = "base64")]

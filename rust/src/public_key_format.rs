@@ -9,7 +9,7 @@ pub enum PublicKeyFormat {
         encoding: PublicKeyEncoding,
         prefix: Option<&'static str>,
     },
-    Alias(&'static str, &'static str),
+    Alias(&'static str, PublicKeyEncoding),
 }
 
 impl PublicKeyFormat {
@@ -17,6 +17,20 @@ impl PublicKeyFormat {
         match self {
             PublicKeyFormat::Entry { name, .. } => name,
             PublicKeyFormat::Alias(name, ..) => name,
+        }
+    }
+
+    pub fn encoding(&self) -> PublicKeyEncoding {
+        match self {
+            PublicKeyFormat::Entry { encoding, .. } => *encoding,
+            PublicKeyFormat::Alias(_, encoding) => *encoding,
+        }
+    }
+
+    pub fn prefix(&self) -> Option<&str> {
+        match self {
+            PublicKeyFormat::Entry { prefix, .. } => *prefix,
+            PublicKeyFormat::Alias(_, _) => None,
         }
     }
 }

@@ -130,6 +130,24 @@ impl From<[u8; PUBLIC_KEY_LEN]> for PublicKeyBytes {
     }
 }
 
+impl TryFrom<&[u8]> for PublicKeyBytes {
+    type Error = ParsePublicKeyError;
+
+    fn try_from(input: &[u8]) -> Result<Self, Self::Error> {
+        Self::from_slice(input)
+    }
+}
+
+#[cfg(feature = "alloc")]
+impl From<&alloc::vec::Vec<u8>> for PublicKeyBytes {
+    fn from(input: &alloc::vec::Vec<u8>) -> Self {
+        let mut bytes = [0u8; PUBLIC_KEY_LEN];
+        let len = bytes.len().min(input.len());
+        bytes[..len].copy_from_slice(&input[..len]);
+        Self(bytes)
+    }
+}
+
 #[cfg(feature = "alloc")]
 impl TryFrom<alloc::string::String> for PublicKeyBytes {
     type Error = ParsePublicKeyError;
@@ -143,16 +161,6 @@ impl TryFrom<alloc::string::String> for PublicKeyBytes {
 impl From<PublicKeyBytes> for alloc::string::String {
     fn from(input: PublicKeyBytes) -> alloc::string::String {
         alloc::string::ToString::to_string(&input)
-    }
-}
-
-#[cfg(feature = "alloc")]
-impl From<&alloc::vec::Vec<u8>> for PublicKeyBytes {
-    fn from(input: &alloc::vec::Vec<u8>) -> Self {
-        let mut bytes = [0u8; PUBLIC_KEY_LEN];
-        let len = bytes.len().min(input.len());
-        bytes[..len].copy_from_slice(&input[..len]);
-        Self(bytes)
     }
 }
 

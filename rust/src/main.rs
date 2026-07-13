@@ -5,6 +5,8 @@ use clientele::{
     SysexitsError::{self, *},
     crates::clap::{Parser, Subcommand},
 };
+use core::str::FromStr;
+use derive_more::FromStrError;
 use edky::{PUBLIC_KEY_FORMATS, PublicKeyBytes, PublicKeyEncoding};
 
 /// Edky command-line interface (CLI)
@@ -26,12 +28,12 @@ enum Command {
 
     /// Convert Ed25519 public keys between various encoding formats
     Convert {
-        /// The input encoding
-        #[clap(long, short, default_value = "hex")]
+        /// The input encoding format
+        #[clap(long, short, default_value = "hex", value_parser = parse_format)]
         from: PublicKeyEncoding,
 
-        /// The output encoding
-        #[clap(long, short, default_value = "hex")]
+        /// The output encoding format
+        #[clap(long, short, default_value = "hex", value_parser = parse_format)]
         to: PublicKeyEncoding,
 
         /// The input strings to convert
@@ -40,8 +42,8 @@ enum Command {
 
     /// Parse Ed25519 public keys in various encoding formats
     Parse {
-        /// The input encoding
-        #[clap(long, short, default_value = "hex")]
+        /// The input encoding format
+        #[clap(long, short, default_value = "hex", value_parser = parse_format)]
         from: PublicKeyEncoding,
 
         /// The input strings to convert
@@ -99,4 +101,14 @@ pub fn main() -> Result<(), SysexitsError> {
             Ok(())
         },
     }
+}
+
+fn parse_format(input: &str) -> Result<PublicKeyEncoding, FromStrError> {
+    // TODO: support an "auto" value that detects the format from the input
+    for format in PUBLIC_KEY_FORMATS {
+        if format.name() == input {
+            return Ok(format.encoding());
+        }
+    }
+    PublicKeyEncoding::from_str(input)
 }

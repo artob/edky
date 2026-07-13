@@ -74,16 +74,18 @@ pub(crate) const BASE64URL: PublicKeyFormat = PublicKeyFormat::Entry {
 };
 
 //#[cfg(feature = "base16")]
-pub(crate) const HEX: PublicKeyFormat = PublicKeyFormat::Alias("base16", "hex");
+pub(crate) const HEX: PublicKeyFormat = PublicKeyFormat::Alias("hex", PublicKeyEncoding::Base16);
 
 #[cfg(feature = "multibase")]
-pub(crate) const IPFS: PublicKeyFormat = PublicKeyFormat::Alias("ipfs", "multibase");
+pub(crate) const IPFS: PublicKeyFormat =
+    PublicKeyFormat::Alias("ipfs", PublicKeyEncoding::Multibase);
 
 #[cfg(feature = "base32z")]
-pub(crate) const IROH: PublicKeyFormat = PublicKeyFormat::Alias("iroh", "base32z");
+pub(crate) const IROH: PublicKeyFormat = PublicKeyFormat::Alias("iroh", PublicKeyEncoding::Base32z);
 
 #[cfg(feature = "multibase")]
-pub(crate) const LIBP2P: PublicKeyFormat = PublicKeyFormat::Alias("libp2p", "multibase");
+pub(crate) const LIBP2P: PublicKeyFormat =
+    PublicKeyFormat::Alias("libp2p", PublicKeyEncoding::Multibase);
 
 #[cfg(feature = "multibase")]
 pub(crate) const MULTIBASE: PublicKeyFormat = PublicKeyFormat::Entry {
