@@ -2,7 +2,7 @@
 
 [package]
 name = "edky"
-version = "0.0.0"
+version = "0.0.1"
 authors = ["Arto Bendiken"]
 edition = "2024"
 #rust-version = "1.85"
