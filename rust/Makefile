@@ -1,15 +1,18 @@
 CARGO = cargo
 
 all: Cargo.toml
-	$(CARGO) build --release
+	@$(CARGO) build --release
 
 check: Cargo.toml
-	$(CARGO) test -- --nocapture
+	@$(CARGO) test -- --nocapture
 
 clean: Cargo.toml
 	@rm -rf *~ target
-	$(CARGO) clean
+	@$(CARGO) clean
 
-.PHONY: all check clean
+maintainer-clean: Cargo.toml
+	@rm -f Cargo.lock
+
+.PHONY: all check clean maintainer-clean
 .SECONDARY:
 .SUFFIXES:
