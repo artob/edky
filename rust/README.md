@@ -115,12 +115,83 @@ println!("{:?}", key.encode(Multibase));
 
 [docs.rs/edky](https://docs.rs/edky)
 
-### Feature Flags
+### Command-Line Interface
+
+```
+Edky converts Ed25519 public keys between various encoding formats
+
+Usage: edky [OPTIONS] [COMMAND]
+
+Commands:
+  list     List the supported public key encoding formats
+  convert  Convert Ed25519 public keys between various encoding formats
+  parse    Parse Ed25519 public keys in various encoding formats
+  help     Print this message or the help of the given subcommand(s)
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -d, --debug          Enable debugging output
+      --license        Show license information
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -V, --version        Print version information
+  -h, --help           Print help (see more with '--help')
+```
+
+#### `edky list`
+
+```
+List the supported public key encoding formats
+
+Usage: edky list [OPTIONS]
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -d, --debug          Enable debugging output
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -h, --help           Print help
+```
+
+#### `edky convert`
+
+```
+Convert Ed25519 public keys between various encoding formats
+
+Usage: edky convert [OPTIONS] [INPUTS]...
+
+Arguments:
+  [INPUTS]...  The input strings to convert
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -f, --from <FROM>    The input encoding format [default: hex]
+  -d, --debug          Enable debugging output
+  -t, --to <TO>        The output encoding format [default: hex]
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -h, --help           Print help
+```
+
+#### `edky parse`
+
+```
+Parse Ed25519 public keys in various encoding formats
+
+Usage: edky parse [OPTIONS] [INPUTS]...
+
+Arguments:
+  [INPUTS]...  The input strings to parse
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -f, --from <FROM>    The input encoding format [default: hex]
+  -d, --debug          Enable debugging output
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -h, --help           Print help
+```
 
 #### Encodings
 
-| Feature         | Example Public Key |
-| :-------------- | :----------------- |
+| For `-f`, `-t`  | Sample Public Key |
+| :-------------- | :---------------- |
 | `asimov`        | ⒶYFVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 | `base16`        | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
 | `base32z`       | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
@@ -135,6 +206,8 @@ println!("{:?}", key.encode(Multibase));
 | `near`          | ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 | `openssh`       | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea
 
+### Feature Flags
+
 #### Interoperability
 
 | Feature         | Version | Summary |
@@ -142,7 +215,7 @@ println!("{:?}", key.encode(Multibase));
 | `bytemuck`      | 1.25    | Implements `bytemuck::{Pod, Zeroable}`
 | `ed25519-dalek` | 3.0     | Implements `From<ed25519_dalek::VerifyingKey>`
 | `eloquent`      | 2.1     | Implements `eloquent::ToSql`
-| `iroh`          | 1.0     | Implements `From<iroh::{PublicKey, EndpointAddr}>`
+| `iroh1`         | 1.0     | Implements `From<iroh::{PublicKey, EndpointAddr}>`
 | `libsql`        | 0.9     | Implements `libsql::params::IntoValue`
 | `rocket`        | 0.5     | Implements `rocket::request::FromParam`
 | `serde`         | 1.0     | Derives `serde::{Serialize, Deserialize}`

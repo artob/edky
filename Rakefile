@@ -21,8 +21,8 @@ end
 namespace :samples do
   desc "Output the samples table for the README"
   task markdown: %w[samples.csv] do |t|
-    puts "| Feature         | Example Public Key |"
-    puts "| :-------------- | :----------------- |"
+    puts "| For `-f`, `-t`  | Sample Public Key |"
+    puts "| :-------------- | :---------------- |"
     SAMPLES.each do |format, sample|
       quoted_format = "`#{format}`"
       puts "| #{quoted_format.ljust(15)} | #{sample}"

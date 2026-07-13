@@ -9,7 +9,7 @@ use core::str::FromStr;
 use derive_more::FromStrError;
 use edky::{PUBLIC_KEY_FORMATS, PublicKeyBytes, PublicKeyEncoding};
 
-/// Edky command-line interface (CLI)
+/// Edky converts Ed25519 public keys between various encoding formats.
 #[derive(Debug, Parser)]
 #[command(name = "Edky", long_about)]
 #[command(arg_required_else_help = true)]
@@ -23,30 +23,30 @@ struct Options {
 
 #[derive(Debug, Subcommand)]
 enum Command {
-    /// List the supported public key encoding formats
+    /// List the supported public key encoding formats.
     List {},
 
-    /// Convert Ed25519 public keys between various encoding formats
+    /// Convert Ed25519 public keys between various encoding formats.
     Convert {
-        /// The input encoding format
+        /// The input encoding format.
         #[clap(long, short, default_value = "hex", value_parser = parse_format)]
         from: PublicKeyEncoding,
 
-        /// The output encoding format
+        /// The output encoding format.
         #[clap(long, short, default_value = "hex", value_parser = parse_format)]
         to: PublicKeyEncoding,
 
-        /// The input strings to convert
+        /// The input strings to convert.
         inputs: Vec<String>,
     },
 
-    /// Parse Ed25519 public keys in various encoding formats
+    /// Parse Ed25519 public keys in various encoding formats.
     Parse {
-        /// The input encoding format
+        /// The input encoding format.
         #[clap(long, short, default_value = "hex", value_parser = parse_format)]
         from: PublicKeyEncoding,
 
-        /// The input strings to convert
+        /// The input strings to parse.
         inputs: Vec<String>,
     },
 }

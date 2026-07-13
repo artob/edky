@@ -173,7 +173,7 @@ include!("public_key_bytes/ed25519-dalek.rs");
 #[cfg(feature = "eloquent")]
 include!("public_key_bytes/eloquent.rs");
 
-#[cfg(feature = "iroh")]
+#[cfg(feature = "iroh1")]
 include!("public_key_bytes/iroh.rs");
 
 #[cfg(feature = "libsql")]
