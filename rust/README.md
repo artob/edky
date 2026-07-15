@@ -5,8 +5,7 @@
 [![Package](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
 [![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
 
-**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
-encoding formats.**
+**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**
 
 <sub>
 
