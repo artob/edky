@@ -1,12 +1,11 @@
-# Edky
+# {{ project.title }}
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Compatibility](https://img.shields.io/badge/rust-1.85%2B-blue)](https://blog.rust-lang.org/2025/02/20/Rust-1.85.0/)
-[![Package](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
-[![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
+[![Package](https://img.shields.io/crates/v/{{ package.name }})](https://crates.io/crates/{{ package.name }})
+[![Documentation](https://img.shields.io/docsrs/{{ package.name }}?label=docs.rs)](https://docs.rs/{{ package.name }})
 
-**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
-encoding formats.**
+**{{ project.summary }}**
 
 <sub>
 
@@ -42,13 +41,13 @@ encoding formats.**
 ### Installation of the CLI via Cargo
 
 ```bash
-cargo install edky --features=cli
+cargo install {{ package.name }} --features=cli
 ```
 
 ### Installation of the Library via Cargo
 
 ```bash
-cargo add edky
+cargo add {{ package.name }}
 ```
 
 ### Installation of the Library in `Cargo.toml`
@@ -57,14 +56,14 @@ Enable all default features:
 
 ```toml
 [dependencies]
-edky = { version = "0" }
+{{ package.name }} = { version = "0" }
 ```
 
 Enable only specific features:
 
 ```toml
 [dependencies]
-edky = { version = "0", default-features = false, features = ["alloc"] }
+{{ package.name }} = { version = "0", default-features = false, features = ["alloc"] }
 ```
 
 ## 👉 Examples
@@ -78,7 +77,7 @@ edky convert -f near -t openssh ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9n
 ### Importing the Library
 
 ```rust
-use edky::{PublicKeyBytes, PublicKeyEncoding};
+use {{ package.name }}::{PublicKeyBytes, PublicKeyEncoding};
 ```
 
 ### Decoding Ed25519 Public Keys
@@ -113,7 +112,7 @@ println!("{:?}", key.encode(Multibase));
 
 ## 📚 Reference
 
-[docs.rs/edky](https://docs.rs/edky)
+[docs.rs/{{ package.name }}](https://docs.rs/{{ package.name }})
 
 ### Command-Line Interface
 
@@ -229,18 +228,18 @@ Options:
 ## 👨‍💻 Development
 
 ```bash
-git clone https://github.com/artob/edky.git
+git clone {{ package.repository }}.git
 ```
 
 ---
 
-[![Share on X](https://img.shields.io/badge/share%20on-x-03A9F4?logo=x)](https://x.com/intent/post?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky&text=Edky)
-[![Share on Reddit](https://img.shields.io/badge/share%20on-reddit-red?logo=reddit)](https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky&title=Edky)
-[![Share on Hacker News](https://img.shields.io/badge/share%20on-hn-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fartob%2Fedky&t=Edky)
-[![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
-[![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
+[![Share on X](https://img.shields.io/badge/share%20on-x-03A9F4?logo=x)](https://x.com/intent/post?url={{ package.repository | url_encode }}&text={{ project.title | url_encode }})
+[![Share on Reddit](https://img.shields.io/badge/share%20on-reddit-red?logo=reddit)](https://reddit.com/submit?url={{ package.repository | url_encode }}&title={{ project.title | url_encode }})
+[![Share on Hacker News](https://img.shields.io/badge/share%20on-hn-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u={{ package.repository | url_encode }}&t={{ project.title | url_encode }})
+[![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u={{ package.repository | url_encode }})
+[![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url={{ package.repository | url_encode }})
 
-[feature flags]: https://docs.rs/crate/edky/latest/features
+[feature flags]: https://docs.rs/crate/{{ package.name }}/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519

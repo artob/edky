@@ -16,6 +16,11 @@ keywords = ["ed25519", "curve25519", "ecc", "cryptography"]
 categories = ["command-line-utilities", "value-formatting", "encoding", "cryptography", "no-std"]
 publish = true
 
+# See: https://readmer.dev
+[package.metadata.readmer.project]
+title = "Edky"
+summary = "Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats."
+
 [features]
 default = ["all", "std"]
 all = ["encodings"]
