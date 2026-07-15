@@ -13,14 +13,14 @@ homepage = "https://edky.dev"
 repository = "https://github.com/artob/edky"
 license = "Unlicense"
 keywords = ["ed25519", "curve25519", "ecc", "cryptography"]
-categories = ["cryptography", "no-std"]
+categories = ["command-line-utilities", "value-formatting", "encoding", "cryptography", "no-std"]
 publish = true
 
 [features]
 default = ["all", "std"]
 all = ["encodings"]
 alloc = ["bs58?/alloc", "data-encoding?/alloc", "ed25519-dalek?/alloc", "serde?/alloc"]
-cli = ["clientele", "dep:clap"]
+cli = ["std", "clientele", "dep:clap"]
 std = ["derive_more/std", "alloc"]
 unstable = []
 

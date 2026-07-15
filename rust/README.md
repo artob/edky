@@ -23,7 +23,7 @@ encoding formats.**
 
 ## ✨ Features
 
-- Available both as the command-line tool [`edky`] and as a Rust library.
+- Available both as the command-line tool [`edky`] and a Rust library.
 - Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
 - Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
 - 100% pure and safe Rust with minimal dependencies and no bloat.

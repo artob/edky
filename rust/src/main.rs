@@ -63,7 +63,7 @@ pub fn main() -> Result<(), SysexitsError> {
 
     // Print the program version, if requested:
     if options.flags.version {
-        println!("edky {}", env!("CARGO_PKG_VERSION"));
+        println!("{} {}", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_VERSION"));
         return Ok(());
     }
 

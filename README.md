@@ -12,7 +12,7 @@ encoding formats.**
 
 ## ✨ Features
 
-- Available both as the command-line tool [`edky`] and as a polyglot library.
+- Available both as the command-line tool [`edky`] and a polyglot library.
 - Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
 - Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
 - Polyglot software available for Dart, Python, Ruby, Rust, and TypeScript.
