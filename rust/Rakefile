@@ -5,14 +5,14 @@ require 'csv'  # `gem install csv`
 def edky(*args) = `cargo run --quiet --features=cli -- #{args.map(&:to_s).map(&:inspect).join(' ')}`.split("\n")
 
 FORMATS = edky(:list).map(&:to_sym).freeze
-SAMPLES = CSV.table('../samples.csv')
+SAMPLES = CSV.table('../data/samples.csv')
   .inject({}) { |hash, row| hash[row[:format].to_sym] = row[:sample]; hash }
   .freeze
 
 task :default => :check
 
 desc "Check all #{FORMATS.size}×#{FORMATS.size}=#{FORMATS.size**2} format conversions"
-task check: %w[../samples.csv] do |t|
+task check: %w[../data/samples.csv] do |t|
   failures = []
   FORMATS.each do |from|
     FORMATS.each do |to|
