@@ -18,6 +18,15 @@ file 'samples.yaml' => 'samples.csv' do |t|
   File.open(t.name, 'w') { |f| f.write(SAMPLES.transform_keys(&:to_s).to_yaml) }
 end
 
+file 'encodings.csv' => 'samples.csv' do |t|
+  File.open(t.name, 'w') do |f|
+    f.puts ["For `-f`, `-t`", "Sample Public Key"].map(&:inspect).join(',')
+    SAMPLES.each do |format, sample|
+      f.puts ["`#{format}`", sample].join(',')
+    end
+  end
+end
+
 namespace :samples do
   desc "Output the samples table for the README"
   task markdown: %w[samples.csv] do |t|
