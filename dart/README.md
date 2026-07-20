@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Compatibility](https://img.shields.io/badge/dart-3.11%2B-blue)](https://dart.dev/blog/announcing-dart-3-11)
-[![Package](https://img.shields.io/pub/v/edky)](https://pub.dev/packages/edky)
+[![Package on Pub.dev](https://img.shields.io/pub/v/edky)](https://pub.dev/packages/edky)
 [![Documentation](https://img.shields.io/badge/docs-passing-green)](https://pub.dev/documentation/edky)
 
 **Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**

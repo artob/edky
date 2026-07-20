@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Compatibility](https://img.shields.io/badge/rust-2024%2B-blue)](https://endoflife.date/rust)
-[![Package](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
+[![Package on Crates.io](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
 [![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
 
 **Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**

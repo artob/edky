@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Compatibility](https://img.shields.io/badge/ruby-4.0%2B-blue)](https://endoflife.date/ruby)
-[![Package](https://img.shields.io/gem/v/edky)](https://rubygems.org/gems/edky)
+[![Package on RubyGems](https://img.shields.io/gem/v/edky)](https://rubygems.org/gems/edky)
 [![Documentation](https://img.shields.io/badge/rubydoc-latest-blue)](https://rubydoc.info/gems/edky)
 
 **Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**

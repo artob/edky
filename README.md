@@ -7,8 +7,7 @@
 [![Package on PyPI](https://img.shields.io/pypi/v/edky)](https://pypi.org/project/edky)
 [![Package on RubyGems](https://img.shields.io/gem/v/edky)](https://rubygems.org/gems/edky)
 
-**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
-encoding formats.**
+**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**
 
 ## ✨ Features
 
@@ -20,13 +19,30 @@ encoding formats.**
 
 ## ⬇️ Installation
 
-### Installation from [Crates.io]
+### Installation of the CLI
+
+#### Installation via [Cargo]
+
+```bash
+cargo install edky --locked --features=cli
+```
+
+### Installation of the Library
+
+<details>
+<summary>Installation for Rust from Crates.io</summary>
+
+#### Installation from [Crates.io]
 
 ```bash
 cargo add edky
 ```
+</details>
 
-### Installation from [NPM]
+<details>
+<summary>Installation for JavaScript/TypeScript from NPM</summary>
+
+#### Installation from [NPM]
 
 ```bash
 npm install edky.js
@@ -34,15 +50,23 @@ bun add edky.js
 pnpm add edky.js
 yarn add edky.js
 ```
+</details>
 
-### Installation from [Pub.dev]
+<details>
+<summary>Installation for Dart from Pub.dev</summary>
+
+#### Installation from [Pub.dev]
 
 ```bash
 dart pub add edky
 flutter pub add edky
 ```
+</details>
 
-### Installation from [PyPI]
+<details>
+<summary>Installation for Python from PyPI</summary>
+
+#### Installation from [PyPI]
 
 ```bash
 pip install -U edky
@@ -50,12 +74,104 @@ uv add edky
 poetry add edky
 pdm add edky
 ```
+</details>
 
-### Installation from [RubyGems]
+<details>
+<summary>Installation for Ruby from RubyGems</summary>
+
+#### Installation from [RubyGems]
 
 ```bash
 gem install edky
 bundle add edky
+```
+</details>
+
+## 👉 Examples
+
+### Converting Ed25119 Public Keys via the CLI
+
+```bash
+edky convert -f near -t openssh ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+```
+
+## 📚 Reference
+
+### Command-Line Interface
+
+```shellsession
+$ edky
+Edky converts Ed25519 public keys between various encoding formats
+
+Usage: edky [OPTIONS] [COMMAND]
+
+Commands:
+  list     List the supported public key encoding formats
+  convert  Convert Ed25519 public keys between various encoding formats
+  parse    Parse Ed25519 public keys in various encoding formats
+  help     Print this message or the help of the given subcommand(s)
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -d, --debug          Enable debugging output
+      --license        Show license information
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -V, --version        Print version information
+  -h, --help           Print help (see more with '--help')
+```
+
+#### `edky list`
+
+```shellsession
+$ edky list --help
+List the supported public key encoding formats
+
+Usage: edky list [OPTIONS]
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -d, --debug          Enable debugging output
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -h, --help           Print help
+```
+
+#### `edky convert`
+
+```shellsession
+$ edky convert --help
+Convert Ed25519 public keys between various encoding formats
+
+Usage: edky convert [OPTIONS] [INPUTS]...
+
+Arguments:
+  [INPUTS]...  The input strings to convert
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -f, --from <FROM>    The input encoding format [default: hex]
+  -d, --debug          Enable debugging output
+  -t, --to <TO>        The output encoding format [default: hex]
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -h, --help           Print help
+```
+
+#### `edky parse`
+
+```shellsession
+$ edky parse --help
+Parse Ed25519 public keys in various encoding formats
+
+Usage: edky parse [OPTIONS] [INPUTS]...
+
+Arguments:
+  [INPUTS]...  The input strings to parse
+
+Options:
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+  -f, --from <FROM>    The input encoding format [default: hex]
+  -d, --debug          Enable debugging output
+  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
+  -h, --help           Print help
 ```
 
 ## 👨‍💻 Development
@@ -72,11 +188,13 @@ git clone https://github.com/artob/edky.git
 [![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
 [![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
 
+[`edky`]: https://github.com/artob/edky#command-line-interface
+
 [Crates.io]: https://crates.io/crates/edky
 [NPM]: https://npmjs.com/package/edky.js
 [Pub.dev]: https://pub.dev/packages/edky
 [PyPI]: https://pypi.org/project/edky
 [RubyGems]: https://rubygems.org/gems/edky
 
+[Cargo]: https://rustup.rs
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
-[`edky`]: https://github.com/artob/edky/tree/master/rust#command-line-interface

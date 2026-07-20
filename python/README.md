@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Compatibility](https://img.shields.io/badge/python-3.14%2B-blue)](https://endoflife.date/python)
-[![Package](https://img.shields.io/pypi/v/edky)](https://pypi.org/project/edky)
+[![Package on PyPI](https://img.shields.io/pypi/v/edky)](https://pypi.org/project/edky)
 
 **Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**
 

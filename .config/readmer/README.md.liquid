@@ -1,0 +1,135 @@
+# {{ project.title }}
+
+{% render 'badge/unlicense' %}
+{% render 'badge/rust-package', name: 'edky' %}
+{% render 'badge/ts-package', name: 'edky.js' %}
+{% render 'badge/dart-package', name: 'edky' %}
+{% render 'badge/python-package', name: 'edky' %}
+{% render 'badge/ruby-package', name: 'edky' %}
+
+**{{ project.summary }}**
+
+## ✨ Features
+
+- Available both as the command-line tool [`edky`] and a polyglot library.
+- Supports the Base16, Base32z, Base58, Base64, and Multibase encodings.
+- Provides interop between ASIMOV, IPFS, Iroh, libp2p, NEAR, OpenSSH, etc.
+- Polyglot software available for Dart, Python, Ruby, Rust, and TypeScript.
+- Cuts red tape: 100% free and unencumbered public domain software.
+
+## ⬇️ Installation
+
+### Installation of the CLI
+
+#### Installation via [Cargo]
+
+```bash
+cargo install edky --locked --features=cli
+```
+
+### Installation of the Library
+
+<details>
+<summary>Installation for Rust from Crates.io</summary>
+
+#### Installation from [Crates.io]
+
+```bash
+cargo add edky
+```
+</details>
+
+<details>
+<summary>Installation for JavaScript/TypeScript from NPM</summary>
+
+#### Installation from [NPM]
+
+```bash
+npm install edky.js
+bun add edky.js
+pnpm add edky.js
+yarn add edky.js
+```
+</details>
+
+<details>
+<summary>Installation for Dart from Pub.dev</summary>
+
+#### Installation from [Pub.dev]
+
+```bash
+dart pub add edky
+flutter pub add edky
+```
+</details>
+
+<details>
+<summary>Installation for Python from PyPI</summary>
+
+#### Installation from [PyPI]
+
+```bash
+pip install -U edky
+uv add edky
+poetry add edky
+pdm add edky
+```
+</details>
+
+<details>
+<summary>Installation for Ruby from RubyGems</summary>
+
+#### Installation from [RubyGems]
+
+```bash
+gem install edky
+bundle add edky
+```
+</details>
+
+## 👉 Examples
+
+### Converting Ed25119 Public Keys via the CLI
+
+```bash
+edky convert -f near -t openssh ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+```
+
+## 📚 Reference
+
+### Command-Line Interface
+
+{% render '.config/readmer/edky.sh-session' %}
+
+#### `edky list`
+
+{% render '.config/readmer/edky-list.sh-session' %}
+
+#### `edky convert`
+
+{% render '.config/readmer/edky-convert.sh-session' %}
+
+#### `edky parse`
+
+{% render '.config/readmer/edky-parse.sh-session' %}
+
+## 👨‍💻 Development
+
+```bash
+git clone https://github.com/artob/edky.git
+```
+
+---
+
+{% render 'footer/share', title: project.title, url: 'https://github.com/artob/edky' %}
+
+[`edky`]: https://github.com/artob/edky#command-line-interface
+
+[Crates.io]: https://crates.io/crates/edky
+[NPM]: https://npmjs.com/package/edky.js
+[Pub.dev]: https://pub.dev/packages/edky
+[PyPI]: https://pypi.org/project/edky
+[RubyGems]: https://rubygems.org/gems/edky
+
+[Cargo]: https://rustup.rs
+[Ed25519]: https://en.wikipedia.org/wiki/Ed25519

@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
 [![Compatibility](https://img.shields.io/badge/typescript-5.4%2B-blue)](https://typescriptlang.org/docs/handbook/release-notes/typescript-5-4.html)
-[![Package](https://img.shields.io/npm/v/edky.js)](https://npmjs.com/package/edky.js)
+[![Package on NPM](https://img.shields.io/npm/v/edky.js)](https://npmjs.com/package/edky.js)
 
 **Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**
 
