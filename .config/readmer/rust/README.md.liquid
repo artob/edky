@@ -102,100 +102,29 @@ println!("{:?}", key.encode(Multibase));
 
 ### Command-Line Interface
 
-```console
-$ edky
-Edky converts Ed25519 public keys between various encoding formats
-
-Usage: edky [OPTIONS] [COMMAND]
-
-Commands:
-  list     List the supported public key encoding formats
-  convert  Convert Ed25519 public keys between various encoding formats
-  parse    Parse Ed25519 public keys in various encoding formats
-  help     Print this message or the help of the given subcommand(s)
-
-Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
-  -d, --debug          Enable debugging output
-      --license        Show license information
-  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
-  -V, --version        Print version information
-  -h, --help           Print help (see more with '--help')
-```
+{% render '.config/readmer/edky.sh-session' %}
 
 #### `edky list`
 
-```console
-$ edky list --help
-List the supported public key encoding formats
-
-Usage: edky list [OPTIONS]
-
-Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
-  -d, --debug          Enable debugging output
-  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
-  -h, --help           Print help
-```
+{% render '.config/readmer/edky-list.sh-session' %}
 
 #### `edky convert`
 
-```console
-$ edky convert --help
-Convert Ed25519 public keys between various encoding formats
-
-Usage: edky convert [OPTIONS] [INPUTS]...
-
-Arguments:
-  [INPUTS]...  The input strings to convert
-
-Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
-  -f, --from <FROM>    The input encoding format [default: hex]
-  -d, --debug          Enable debugging output
-  -t, --to <TO>        The output encoding format [default: hex]
-  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
-  -h, --help           Print help
-```
+{% render '.config/readmer/edky-convert.sh-session' %}
 
 #### `edky parse`
 
-```console
-$ edky parse --help
-Parse Ed25519 public keys in various encoding formats
-
-Usage: edky parse [OPTIONS] [INPUTS]...
-
-Arguments:
-  [INPUTS]...  The input strings to parse
-
-Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
-  -f, --from <FROM>    The input encoding format [default: hex]
-  -d, --debug          Enable debugging output
-  -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
-  -h, --help           Print help
-```
+{% render '.config/readmer/edky-parse.sh-session' %}
 
 #### Encodings
 
-{% render 'data/encodings.csv' %}
+{% render 'data/samples.psv' %}
 
 ### Feature Flags
 
 #### Interoperability
 
-| Feature         | Version | Summary |
-| :-------------- | :------ | :------ |
-| `bytemuck`      | 1.25    | Implements `bytemuck::{Pod, Zeroable}`
-| `ed25519-dalek` | 3.0     | Implements `From<ed25519_dalek::VerifyingKey>`
-| `eloquent`      | 2.1     | Implements `eloquent::ToSql`
-| `iroh1`         | 1.0     | Implements `From<iroh::{PublicKey, EndpointAddr}>`
-| `libsql`        | 0.9     | Implements `libsql::params::IntoValue`
-| `rocket`        | 0.5     | Implements `rocket::request::FromParam`
-| `serde`         | 1.0     | Derives `serde::{Serialize, Deserialize}`
-| `turso`         | 0.6     | Implements `turso::IntoValue`
-| `zerocopy`      | 0.8     | Derives `zerocopy::{FromBytes, IntoBytes}`
+{% render 'data/features.psv' %}
 
 ## 👨‍💻 Development
 

@@ -5,7 +5,7 @@ all: README.md
 README.md: .config/readmer/README.md.liquid
 	$(READMER) render $< > $@
 
-readmes:
+readmes: README.md
 	@rc=0; \
 	for dir in dart js python ruby rust; do \
 		if [ -d $$dir ]; then \

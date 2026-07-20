@@ -1,0 +1,10 @@
+Feature         | Version | Summary
+`bytemuck`      | 1.25    | Implements `bytemuck::{Pod, Zeroable}`
+`ed25519-dalek` | 3.0     | Implements `From<ed25519_dalek::VerifyingKey>`
+`eloquent`      | 2.1     | Implements `eloquent::ToSql`
+`iroh1`         | 1.0     | Implements `From<iroh::{PublicKey, EndpointAddr}>`
+`libsql`        | 0.9     | Implements `libsql::params::IntoValue`
+`rocket`        | 0.5     | Implements `rocket::request::FromParam`
+`serde`         | 1.0     | Derives `serde::{Serialize, Deserialize}`
+`turso`         | 0.6     | Implements `turso::IntoValue`
+`zerocopy`      | 0.8     | Derives `zerocopy::{FromBytes, IntoBytes}`

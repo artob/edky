@@ -116,7 +116,7 @@ println!("{:?}", key.encode(Multibase));
 
 ### Command-Line Interface
 
-```console
+```shellsession
 $ edky
 Edky converts Ed25519 public keys between various encoding formats
 
@@ -139,7 +139,7 @@ Options:
 
 #### `edky list`
 
-```console
+```shellsession
 $ edky list --help
 List the supported public key encoding formats
 
@@ -154,7 +154,7 @@ Options:
 
 #### `edky convert`
 
-```console
+```shellsession
 $ edky convert --help
 Convert Ed25519 public keys between various encoding formats
 
@@ -174,7 +174,7 @@ Options:
 
 #### `edky parse`
 
-```console
+```shellsession
 $ edky parse --help
 Parse Ed25519 public keys in various encoding formats
 
@@ -193,37 +193,37 @@ Options:
 
 #### Encodings
 
-| For `-f`, `-t` | Sample Public Key |
-| -------------- | ----------------- |
-| `asimov` | ⒶYFVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z |
-| `base16` | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a |
-| `base32z` | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy |
-| `base58` | FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z |
-| `base64` | 11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo= |
-| `base64url` | 11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo |
-| `hex` | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a |
-| `ipfs` | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw |
-| `iroh` | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy |
-| `libp2p` | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw |
-| `multibase` | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw |
-| `near` | ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z |
-| `openssh` | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea |
+| For `-f`, `-t`   | Sample Public Key |
+| ---------------- | ----------------- |
+| `asimov`         | ⒶYFVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z |
+| `base16`         | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a |
+| `base32z`        | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy |
+| `base58`         | FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z |
+| `base64`         | 11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo= |
+| `base64url`      | 11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo |
+| `hex`            | d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a |
+| `ipfs`           | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw |
+| `iroh`           | 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy |
+| `libp2p`         | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw |
+| `multibase`      | z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw |
+| `near`           | ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z |
+| `openssh`        | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINdamAGCsQq31Uv+08lkBzoO4XLz2qYjJa8CGmj3B1Ea |
 
 ### Feature Flags
 
 #### Interoperability
 
-| Feature         | Version | Summary |
-| :-------------- | :------ | :------ |
-| `bytemuck`      | 1.25    | Implements `bytemuck::{Pod, Zeroable}`
-| `ed25519-dalek` | 3.0     | Implements `From<ed25519_dalek::VerifyingKey>`
-| `eloquent`      | 2.1     | Implements `eloquent::ToSql`
-| `iroh1`         | 1.0     | Implements `From<iroh::{PublicKey, EndpointAddr}>`
-| `libsql`        | 0.9     | Implements `libsql::params::IntoValue`
-| `rocket`        | 0.5     | Implements `rocket::request::FromParam`
-| `serde`         | 1.0     | Derives `serde::{Serialize, Deserialize}`
-| `turso`         | 0.6     | Implements `turso::IntoValue`
-| `zerocopy`      | 0.8     | Derives `zerocopy::{FromBytes, IntoBytes}`
+| Feature          | Version  | Summary |
+| ---------------- | -------- | ------- |
+| `bytemuck`       | 1.25     | Implements `bytemuck::{Pod, Zeroable}` |
+| `ed25519-dalek`  | 3.0      | Implements `From<ed25519_dalek::VerifyingKey>` |
+| `eloquent`       | 2.1      | Implements `eloquent::ToSql` |
+| `iroh1`          | 1.0      | Implements `From<iroh::{PublicKey, EndpointAddr}>` |
+| `libsql`         | 0.9      | Implements `libsql::params::IntoValue` |
+| `rocket`         | 0.5      | Implements `rocket::request::FromParam` |
+| `serde`          | 1.0      | Derives `serde::{Serialize, Deserialize}` |
+| `turso`          | 0.6      | Implements `turso::IntoValue` |
+| `zerocopy`       | 0.8      | Derives `zerocopy::{FromBytes, IntoBytes}` |
 
 ## 👨‍💻 Development
 
