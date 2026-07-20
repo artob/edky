@@ -136,7 +136,7 @@ git clone {{ github.repository.url }}
 
 {% render 'footer/share', title: project.title, url: github.repository.link %}
 
-[`edky`]: https://github.com/artob/edky#command-line-interface
+[`edky`]: {{ github.repository.link }}#command-line-interface
 
 [feature flags]: https://docs.rs/crate/{{ package.name }}/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html

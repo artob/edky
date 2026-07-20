@@ -120,14 +120,14 @@ edky convert -f near -t openssh ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9n
 ## 👨‍💻 Development
 
 ```bash
-git clone https://github.com/artob/edky.git
+git clone {{ github.repository.url }}
 ```
 
 ---
 
-{% render 'footer/share', title: project.title, url: 'https://github.com/artob/edky' %}
+{% render 'footer/share', title: project.title, url: github.repository.link %}
 
-[`edky`]: https://github.com/artob/edky#command-line-interface
+[`edky`]: {{ github.repository.link }}#command-line-interface
 
 [Crates.io]: https://crates.io/crates/edky
 [NPM]: https://npmjs.com/package/edky.js
