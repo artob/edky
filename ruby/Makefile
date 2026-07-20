@@ -1,8 +1,14 @@
+GEM = gem
 READMER = readmer
 
 all: README.md
 
-README.md: ../.config/readmer/ruby/README.md.liquid
+.gemspec.yaml: edky.gemspec
+	$(GEM) build -o $@.gem $<
+	$(GEM) spec $@.gem > $@
+	@rm -f $@.gem
+
+README.md: ../.config/readmer/ruby/README.md.liquid .gemspec.yaml
 	$(READMER) render $< > $@
 
 clean:

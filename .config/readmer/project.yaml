@@ -1,0 +1,6 @@
+# See: https://github.com/artob/readmer#template-variables
+---
+label: Edky
+title: Edky
+summary:
+  Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.

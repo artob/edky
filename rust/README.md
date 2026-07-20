@@ -1,7 +1,7 @@
 # Edky
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
-[![Compatibility](https://img.shields.io/badge/rust-1.85%2B-blue)](https://blog.rust-lang.org/2025/02/20/Rust-1.85.0/)
+[![Compatibility](https://img.shields.io/badge/rust-2024%2B-blue)](https://endoflife.date/rust)
 [![Package](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
 [![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
 
@@ -34,14 +34,14 @@
 
 ## 🛠️ Prerequisites
 
-- [Rust] 1.85+ (2024 edition)
+- [Rust] 2024+
 
 ## ⬇️ Installation
 
 ### Installation of the CLI via Cargo
 
 ```bash
-cargo install edky --features=cli
+cargo install edky --locked --features=cli
 ```
 
 ### Installation of the Library via Cargo
@@ -239,9 +239,10 @@ git clone https://github.com/artob/edky.git
 [![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
 [![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
 
+[`edky`]: https://github.com/artob/edky#command-line-interface
+
 [feature flags]: https://docs.rs/crate/edky/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
 [Rust]: https://rust-lang.org
-[`edky`]: #command-line-interface

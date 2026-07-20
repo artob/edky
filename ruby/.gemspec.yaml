@@ -1,0 +1,80 @@
+--- !ruby/object:Gem::Specification
+name: edky
+version: !ruby/object:Gem::Version
+  version: 0.0.0
+platform: ruby
+authors:
+- Arto Bendiken
+bindir: bin
+cert_chain: []
+date: 2026-07-11 00:00:00.000000000 Z
+dependencies:
+- !ruby/object:Gem::Dependency
+  name: rspec
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '3.13'
+  type: :development
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '3.13'
+- !ruby/object:Gem::Dependency
+  name: yard
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '0.9'
+  type: :development
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '0.9'
+description: Convert Ed25519 public keys between various encoding formats.
+email: arto@bendiken.net
+executables: []
+extensions: []
+extra_rdoc_files: []
+files:
+- AUTHORS
+- CHANGES.md
+- README.md
+- UNLICENSE
+- VERSION
+- lib/edky.rb
+- lib/edky/version.rb
+homepage: https://edky.dev
+licenses:
+- Unlicense
+metadata:
+  bug_tracker_uri: https://github.com/artob/edky/issues
+  changelog_uri: https://github.com/artob/edky/blob/master/CHANGES.md
+  documentation_uri: https://rubydoc.info/gems/edky
+  homepage_uri: https://edky.dev
+  source_code_uri: https://github.com/artob/edky
+rdoc_options: []
+require_paths:
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: '4.0'
+required_rubygems_version: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: '0'
+requirements: []
+rubygems_version: 4.0.11
+specification_version: 4
+summary: Edky for Ruby
+test_files: []
+

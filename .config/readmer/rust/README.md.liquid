@@ -20,14 +20,14 @@
 
 ## 🛠️ Prerequisites
 
-- [Rust] 1.85+ (2024 edition)
+- [{{ package.language.label }}] {{ package.language.minimum_version }}+
 
 ## ⬇️ Installation
 
 ### Installation of the CLI via Cargo
 
 ```bash
-cargo install {{ package.name }} --features=cli
+cargo install {{ package.name }} --locked --features=cli
 ```
 
 ### Installation of the Library via Cargo
@@ -214,16 +214,17 @@ Options:
 ## 👨‍💻 Development
 
 ```bash
-git clone {{ package.repository }}.git
+git clone {{ github.repository.url }}
 ```
 
 ---
 
-{% render 'footer/share', title: project.title, url: package.repository %}
+{% render 'footer/share', title: project.title, url: github.repository.link %}
+
+[`edky`]: https://github.com/artob/edky#command-line-interface
 
 [feature flags]: https://docs.rs/crate/{{ package.name }}/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
 [Rust]: https://rust-lang.org
-[`edky`]: #command-line-interface

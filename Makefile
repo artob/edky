@@ -5,6 +5,15 @@ all: README.md
 README.md: .config/readmer/README.md.liquid
 	$(READMER) render $< > $@
 
+readmes:
+	@rc=0; \
+	for dir in dart js python ruby rust; do \
+		if [ -d $$dir ]; then \
+			$(MAKE) -C $$dir README.md || rc=$$?; \
+		fi; \
+	done; \
+	exit $$rc
+
 clean:
 	@rc=0; \
 	for dir in dart js python ruby rust; do \
@@ -23,6 +32,6 @@ maintainer-clean:
 	done; \
 	exit $$rc
 
-.PHONY: all clean maintainer-clean
+.PHONY: all readmes clean maintainer-clean
 .SECONDARY:
 .SUFFIXES:

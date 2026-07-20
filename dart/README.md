@@ -1,7 +1,24 @@
 # Edky.dart: Edky for Dart
 
-**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various
-encoding formats.**
+[![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
+[![Compatibility](https://img.shields.io/badge/dart-3.11%2B-blue)](https://dart.dev/blog/announcing-dart-3-11)
+[![Package](https://img.shields.io/pub/v/edky)](https://pub.dev/packages/edky)
+[![Documentation](https://img.shields.io/badge/docs-passing-green)](https://pub.dev/documentation/edky)
+
+**Edky (pronounced *ed-key*) converts [Ed25519] public keys between various encoding formats.**
+
+<sub>
+
+[[Features](#-features)] |
+[[Prerequisites](#%EF%B8%8F-prerequisites)] |
+[[Installation](#%EF%B8%8F-installation)] |
+[[Examples](#-examples)] |
+[[Reference](#-reference)] |
+[[Development](#%E2%80%8D-development)]
+
+</sub>
+
+<br/>
 
 ## ✨ Features
 
@@ -11,13 +28,31 @@ encoding formats.**
 - Polyglot software also available for Python, Ruby, Rust, and TypeScript.
 - Cuts red tape: 100% free and unencumbered public domain software.
 
+## 🛠️ Prerequisites
+
+- [Dart] 3.11+
+
+## ⬇️ Installation
+
+## 👉 Examples
+
+## 📚 Reference
+
+## 👨‍💻 Development
+
+```bash
+git clone https://github.com/artob/edky.git
+```
+
 ---
 
-[![Share on X](https://img.shields.io/badge/share%20on-x-03A9F4?logo=x)](https://x.com/intent/post?url=https://github.com/artob/edky&text=Edky)
-[![Share on Reddit](https://img.shields.io/badge/share%20on-reddit-red?logo=reddit)](https://reddit.com/submit?url=https://github.com/artob/edky&title=Edky)
-[![Share on Hacker News](https://img.shields.io/badge/share%20on-hn-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u=https://github.com/artob/edky&t=Edky)
-[![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/artob/edky)
-[![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/artob/edky)
+[![Share on X](https://img.shields.io/badge/share%20on-x-03A9F4?logo=x)](https://x.com/intent/post?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky&text=Edky)
+[![Share on Reddit](https://img.shields.io/badge/share%20on-reddit-red?logo=reddit)](https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky&title=Edky)
+[![Share on Hacker News](https://img.shields.io/badge/share%20on-hn-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fartob%2Fedky&t=Edky)
+[![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
+[![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fartob%2Fedky)
 
+[`edky`]: https://github.com/artob/edky#command-line-interface
+
+[Dart]: https://dart.dev
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
-[`edky`]: https://github.com/artob/edky/tree/master/rust#command-line-interface
