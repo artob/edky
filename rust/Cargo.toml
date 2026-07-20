@@ -84,7 +84,18 @@ clientele = { version = "0.3.8", features = [], optional = true }
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
+[package.metadata.wix]
+upgrade-guid = "14F95699-57B8-4D46-B7C0-393519C85E7D"
+path-guid = "3D6D6F86-E455-4AEC-935D-9F8228E494F3"
+license = false
+eula = false
+
 [[bin]]
 name = "edky"
 path = "src/main.rs"
 required-features = ["cli"]
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
