@@ -67,7 +67,7 @@ cargo add edky
 </details>
 
 <details>
-<summary>Configuration in `Cargo.toml`</summary>
+<summary>Configuration in <code>Cargo.toml</code></summary>
 
 #### Configuration in `Cargo.toml`
 
@@ -261,6 +261,7 @@ git clone https://github.com/artob/edky.git
 
 [`edky`]: https://github.com/artob/edky#command-line-interface
 
+[Crates.io]: https://crates.io/crates/edky
 [feature flags]: https://docs.rs/crate/edky/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
