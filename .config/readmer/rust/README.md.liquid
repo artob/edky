@@ -24,19 +24,38 @@
 
 ## ⬇️ Installation
 
-### Installation of the CLI via Cargo
+### Installation of the CLI
+
+#### Installation via [Cargo Binstall]
+
+```bash
+cargo binstall -y {{ package.name }}
+```
+
+<img width="100%" alt="Installation via cargo-binstall" src="{{ github.repository.link }}/raw/master/rust/etc/asciinema/install.gif"/>
+
+#### Installation via [Cargo]
 
 ```bash
 cargo install {{ package.name }} --locked --features=cli
 ```
 
-### Installation of the Library via Cargo
+### Installation of the Library
+
+<details>
+<summary>Installation from Crates.io</summary>
+
+#### Installation from [Crates.io]
 
 ```bash
 cargo add {{ package.name }}
 ```
+</details>
 
-### Installation of the Library in `Cargo.toml`
+<details>
+<summary>Configuration in `Cargo.toml`</summary>
+
+#### Configuration in `Cargo.toml`
 
 Enable all default features:
 
@@ -51,6 +70,7 @@ Enable only specific features:
 [dependencies]
 {{ package.name }} = { version = "0", default-features = false, features = ["alloc"] }
 ```
+</details>
 
 ## 👉 Examples
 
@@ -141,5 +161,7 @@ git clone {{ github.repository.url }}
 [feature flags]: https://docs.rs/crate/{{ package.name }}/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
+[Cargo]: https://rustup.rs
+[Cargo Binstall]: https://crates.io/crates/cargo-binstall
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
 [Rust]: https://rust-lang.org

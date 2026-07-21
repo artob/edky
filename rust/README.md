@@ -38,19 +38,38 @@
 
 ## ⬇️ Installation
 
-### Installation of the CLI via Cargo
+### Installation of the CLI
+
+#### Installation via [Cargo Binstall]
+
+```bash
+cargo binstall -y edky
+```
+
+<img width="100%" alt="Installation via cargo-binstall" src="https://github.com/artob/edky/raw/master/rust/etc/asciinema/install.gif"/>
+
+#### Installation via [Cargo]
 
 ```bash
 cargo install edky --locked --features=cli
 ```
 
-### Installation of the Library via Cargo
+### Installation of the Library
+
+<details>
+<summary>Installation from Crates.io</summary>
+
+#### Installation from [Crates.io]
 
 ```bash
 cargo add edky
 ```
+</details>
 
-### Installation of the Library in `Cargo.toml`
+<details>
+<summary>Configuration in `Cargo.toml`</summary>
+
+#### Configuration in `Cargo.toml`
 
 Enable all default features:
 
@@ -65,6 +84,7 @@ Enable only specific features:
 [dependencies]
 edky = { version = "0", default-features = false, features = ["alloc"] }
 ```
+</details>
 
 ## 👉 Examples
 
@@ -244,5 +264,7 @@ git clone https://github.com/artob/edky.git
 [feature flags]: https://docs.rs/crate/edky/latest/features
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
+[Cargo]: https://rustup.rs
+[Cargo Binstall]: https://crates.io/crates/cargo-binstall
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
 [Rust]: https://rust-lang.org

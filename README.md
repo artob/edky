@@ -21,6 +21,14 @@
 
 ### Installation of the CLI
 
+#### Installation via [Cargo Binstall]
+
+```bash
+cargo binstall -y edky
+```
+
+<img width="100%" alt="Installation via cargo-binstall" src="https://github.com/artob/edky/raw/master/rust/etc/asciinema/install.gif"/>
+
 #### Installation via [Cargo]
 
 ```bash
@@ -215,4 +223,5 @@ git clone https://github.com/artob/edky.git
 [RubyGems]: https://rubygems.org/gems/edky
 
 [Cargo]: https://rustup.rs
+[Cargo Binstall]: https://crates.io/crates/cargo-binstall
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
