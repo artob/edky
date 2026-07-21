@@ -4,8 +4,8 @@ READMER = readmer
 all: README.md
 
 .gemspec.yaml: edky.gemspec
-	$(GEM) build -o $@.gem $<
-	$(GEM) spec $@.gem > $@
+	@$(GEM) build --silent -o $@.gem $<
+	@$(GEM) spec $@.gem > $@
 	@rm -f $@.gem
 
 README.md: ../.config/readmer/ruby/README.md.liquid .gemspec.yaml
