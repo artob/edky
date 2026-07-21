@@ -25,7 +25,7 @@
 [0.231, "o", "y"]
 [0.145, "o", "\u001b[?2004l\r\r\n"]
 [0.087, "o", "\u001b[32m INFO\u001b[0m \u001b[1mresolve\u001b[0m\u001b[2m:\u001b[0m Resolving package: 'edky'\r\n"]
-[2.108, "o", "\u001b[33m WARN\u001b[0m The package edky v0.0.2 (aarch64-apple-darwin) has been downloaded from github.com\r\n\u001b[32m INFO\u001b[0m This will install the following binaries:\r\n\u001b[32m INFO\u001b[0m   - edky => /Users/jhacker/.cargo/bin/edky\r\n"]
+[2.108, "o", "\u001b[33m WARN\u001b[0m The package edky v0.1.0 (aarch64-apple-darwin) has been downloaded from github.com\r\n\u001b[32m INFO\u001b[0m This will install the following binaries:\r\n\u001b[32m INFO\u001b[0m   - edky => /Users/jhacker/.cargo/bin/edky\r\n"]
 [0.000, "o", "\u001b[32m INFO\u001b[0m Installing binaries...\r\n"]
 [0.002, "o", "\u001b[32m INFO\u001b[0m Done in 2.128105292s\r\n"]
 [0.002, "o", "\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                                                   \r \r"]

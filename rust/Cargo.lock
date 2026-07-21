@@ -1135,7 +1135,7 @@ dependencies = [
 
 [[package]]
 name = "edky"
-version = "0.0.2"
+version = "0.1.0"
 dependencies = [
  "bs58",
  "bytemuck",
