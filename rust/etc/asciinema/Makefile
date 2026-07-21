@@ -3,7 +3,10 @@
 AGG = agg --quiet
 AGGFLAGS = --cols 100 --rows 30 --theme dracula --renderer swash
 
-all: install.gif list.gif
+all: convert.gif install.gif list.gif
+
+convert.gif: convert.cast
+	$(AGG) $(AGGFLAGS) $< $@
 
 install.gif: install.cast
 	$(AGG) $(AGGFLAGS) $< $@
