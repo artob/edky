@@ -6,7 +6,7 @@
 
 {% render 'header/toc' %}
 
-<img width="100%" alt="Showcase of edky convert" src="https://github.com/artob/edky/raw/master/rust/etc/asciinema/convert.gif"/>
+<img width="100%" alt="Showcase of edky convert" src="{{ github.repository.link }}/raw/master/rust/etc/asciinema/convert.gif"/>
 
 ## ✨ Features
 
@@ -40,6 +40,16 @@ cargo binstall -y {{ package.name }}
 
 ```bash
 cargo install {{ package.name }} --locked --features=cli
+```
+
+#### Downloading Release Tarballs
+
+```bash
+wget {{ github.repository.link }}/releases/download/{{ package.version }}/{{ package.name }}-aarch64-apple-darwin.tar.xz
+wget {{ github.repository.link }}/releases/download/{{ package.version }}/{{ package.name }}-aarch64-unknown-linux-gnu.tar.xz
+wget {{ github.repository.link }}/releases/download/{{ package.version }}/{{ package.name }}-x86_64-apple-darwin.tar.xz
+wget {{ github.repository.link }}/releases/download/{{ package.version }}/{{ package.name }}-x86_64-pc-windows-msvc.zip
+wget {{ github.repository.link }}/releases/download/{{ package.version }}/{{ package.name }}-x86_64-unknown-linux-gnu.tar.xz
 ```
 
 ### Installation of the Library
