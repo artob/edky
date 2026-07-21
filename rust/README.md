@@ -90,8 +90,18 @@ edky = { version = "0", default-features = false, features = ["alloc"] }
 
 ### Converting Ed25119 Public Keys via the CLI
 
-```bash
-edky convert -f near -t openssh ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+```shellsession
+$ edky convert -f iroh -t libp2p 47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
+z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw
+
+$ edky convert -f libp2p -t iroh z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw
+47pjoycnsrfmxikm95jh13y88e8qnhzu5kungjpxyepgt7a8krpy
+
+$ edky convert -f near -t hex ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
+d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
+
+$ edky convert -f hex -t near d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a
+ed25519:FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z
 ```
 
 ### Importing the Library
