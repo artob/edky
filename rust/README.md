@@ -20,6 +20,8 @@
 
 <br/>
 
+<img width="100%" alt="Showcase of edky convert" src="https://github.com/artob/edky/raw/master/rust/etc/asciinema/convert.gif"/>
+
 ## ✨ Features
 
 - Available both as the command-line tool [`edky`] and a Rust library.
