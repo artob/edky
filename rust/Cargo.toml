@@ -95,6 +95,10 @@ name = "edky"
 path = "src/main.rs"
 required-features = ["cli"]
 
+# See: https://github.com/cargo-bins/cargo-binstall/blob/main/SUPPORT.md
+[package.metadata.binstall]
+disabled-strategies = ["quick-install"]
+
 # The profile that 'dist' will build with
 [profile.dist]
 inherits = "release"
