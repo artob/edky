@@ -50,6 +50,12 @@ cargo binstall -y edky
 
 <img width="100%" alt="Installation via cargo-binstall" src="https://github.com/artob/edky/raw/master/rust/etc/asciinema/install.gif"/>
 
+#### Installation via [mise]
+
+```bash
+mise use -g github:artob/edky
+```
+
 #### Installation via [Cargo]
 
 ```bash
@@ -291,3 +297,4 @@ git clone https://github.com/artob/edky.git
 [Cargo Binstall]: https://crates.io/crates/cargo-binstall
 [Ed25519]: https://en.wikipedia.org/wiki/Ed25519
 [Rust]: https://rust-lang.org
+[mise]: https://mise.jdx.dev
