@@ -79,6 +79,9 @@ zerocopy = { version = "0.8", default-features = false, features = ["derive"], o
 clap = { version = "4.5", default-features = false, optional = true }
 clientele = { version = "0.3.8", features = [], optional = true }
 
+[dev-dependencies]
+distrib = { version = "0", default-features = false }
+
 # Preview locally with: RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features
 [package.metadata.docs.rs]
 all-features = true
@@ -103,3 +106,5 @@ disabled-strategies = ["quick-install"]
 [profile.dist]
 inherits = "release"
 lto = "thin"
+
+[patch.crates-io]

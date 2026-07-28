@@ -8,6 +8,7 @@ homepage: https://edky.dev
 repository: https://github.com/artob/edky
 issue_tracker: https://github.com/artob/edky/issues
 dev_dependencies:
+  distrib: ^0.0.0
   lints: ^6.0.0
   test: ^1.25.0
 environment:

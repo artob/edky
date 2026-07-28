@@ -24,6 +24,9 @@ Gem::Specification.new do |gem|
   gem.executables        = %w()
 
   gem.required_ruby_version = '>= 4.0'
-  gem.add_development_dependency 'rspec', '~> 3.13'
-  gem.add_development_dependency 'yard' , '~> 0.9'
+  gem.add_development_dependency 'distrib',       '~> 0'
+  gem.add_development_dependency 'rake',          '~> 13'
+  gem.add_development_dependency 'rake-compiler', '~> 1.3'
+  gem.add_development_dependency 'rspec',         '~> 3.13'
+  gem.add_development_dependency 'yard' ,         '~> 0.9'
 end

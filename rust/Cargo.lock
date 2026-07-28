@@ -579,7 +579,7 @@ dependencies = [
  "camino",
  "clap",
  "dirs",
- "dogma",
+ "dogma 0.1.11",
  "dotenvy",
  "duration-str",
  "error-stack",
@@ -1068,6 +1068,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "distrib"
+version = "0.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "968a2fa2210d5f2e2c5aebec15f5d0326f210210128a80f076caeb6d517aeebf"
+dependencies = [
+ "derive_more",
+ "dogma 0.2.1",
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "dlopen2"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1087,6 +1098,16 @@ dependencies = [
  "iri-string",
  "known-schemes",
  "serde",
+]
+
+[[package]]
+name = "dogma"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2613a308ba56b339d7d33b6481f02be2380e20c24f5c0ed0ec84bcbfe1f094fe"
+dependencies = [
+ "iri-string",
+ "known-schemes",
 ]
 
 [[package]]
@@ -1144,6 +1165,7 @@ dependencies = [
  "data-encoding",
  "data-encoding-macro",
  "derive_more",
+ "distrib",
  "ed25519-dalek",
  "eloquent",
  "iroh",
@@ -1516,7 +1538,7 @@ version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "08b5c1c21911873fcb901979b0fa4287d3a5ac4296a88cd4764333c0567f26c9"
 dependencies = [
- "dogma",
+ "dogma 0.1.11",
  "secrecy",
 ]
 
@@ -1593,7 +1615,7 @@ checksum = "fd6761a81efac6a3b56c289383c0e94539ee8ad7441feb682436778019a5bfb0"
 dependencies = [
  "clap",
  "data-url",
- "dogma",
+ "dogma 0.1.11",
  "percent-encoding",
  "thiserror 2.0.18",
 ]
