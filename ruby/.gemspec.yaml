@@ -10,6 +10,62 @@ cert_chain: []
 date: 2026-07-11 00:00:00.000000000 Z
 dependencies:
 - !ruby/object:Gem::Dependency
+  name: rb_sys
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - ">="
+      - !ruby/object:Gem::Version
+        version: '0'
+  type: :runtime
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - ">="
+      - !ruby/object:Gem::Version
+        version: '0'
+- !ruby/object:Gem::Dependency
+  name: distrib
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '0'
+  type: :development
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '0'
+- !ruby/object:Gem::Dependency
+  name: rake
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '13'
+  type: :development
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '13'
+- !ruby/object:Gem::Dependency
+  name: rake-compiler
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '1.3'
+  type: :development
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - "~>"
+      - !ruby/object:Gem::Version
+        version: '1.3'
+- !ruby/object:Gem::Dependency
   name: rspec
   requirement: !ruby/object:Gem::Requirement
     requirements:
@@ -38,9 +94,11 @@ dependencies:
       - !ruby/object:Gem::Version
         version: '0.9'
 description: Convert Ed25519 public keys between various encoding formats.
-email: arto@bendiken.net
+email:
+- arto@bendiken.net
 executables: []
-extensions: []
+extensions:
+- ext/edky/extconf.rb
 extra_rdoc_files: []
 files:
 - AUTHORS
@@ -48,17 +106,21 @@ files:
 - README.md
 - UNLICENSE
 - VERSION
+- ext/edky/Cargo.toml
+- ext/edky/build.rs
+- ext/edky/extconf.rb
+- ext/edky/src/lib.rs
 - lib/edky.rb
 - lib/edky/version.rb
 homepage: https://edky.dev
 licenses:
 - Unlicense
 metadata:
+  source_code_uri: https://github.com/artob/edky
   bug_tracker_uri: https://github.com/artob/edky/issues
   changelog_uri: https://github.com/artob/edky/blob/master/CHANGES.md
   documentation_uri: https://rubydoc.info/gems/edky
   homepage_uri: https://edky.dev
-  source_code_uri: https://github.com/artob/edky
 rdoc_options: []
 require_paths:
 - lib

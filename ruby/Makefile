@@ -12,7 +12,7 @@ README.md: ../.config/readmer/ruby/README.md.liquid .gemspec.yaml
 	$(READMER) render $< > $@
 
 clean:
-	rm -rf pkg .bundle *.gem
+	rm -rf lib/**/*.bundle pkg target tmp .bundle *.gem
 	find . -maxdepth 1 -name '*.gem' -exec rm -f {} + || true
 
 maintainer-clean:
