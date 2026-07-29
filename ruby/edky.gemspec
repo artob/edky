@@ -18,12 +18,14 @@ Gem::Specification.new do |gem|
   gem.author             = "Arto Bendiken"
   gem.email              = "arto@bendiken.net"
 
-  gem.platform           = Gem::Platform::RUBY
-  gem.files              = %w(AUTHORS CHANGES.md README.md UNLICENSE VERSION) + Dir.glob('lib/**/*.rb')
-  gem.bindir             = %q(bin)
-  gem.executables        = %w()
+  #gem.platform           = Gem::Platform::RUBY
+  gem.files              = %w[AUTHORS CHANGES.md README.md UNLICENSE VERSION] + Dir['lib/**/*.rb'] + Dir['ext/**/*.{rb,rs,lock,toml}']
+  gem.bindir             = %q[bin]
+  gem.executables        = %w[]
+  gem.extensions         = %w[ext/edky/extconf.rb]
 
   gem.required_ruby_version = '>= 4.0'
+  gem.add_dependency 'rb_sys'
   gem.add_development_dependency 'distrib',       '~> 0'
   gem.add_development_dependency 'rake',          '~> 13'
   gem.add_development_dependency 'rake-compiler', '~> 1.3'

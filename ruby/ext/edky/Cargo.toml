@@ -1,0 +1,38 @@
+# See: https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "edky"
+version = "0.1.0"
+authors = ["Arto Bendiken"]
+edition = "2024"
+#rust-version = "1.85"
+description = "Convert Ed25519 public keys between various encoding formats."
+#documentation = "https://docs.rs/edky"
+readme = true
+homepage = "https://edky.dev"
+repository = "https://github.com/artob/edky"
+license = "Unlicense"
+keywords = []
+categories = []
+publish = false
+
+[features]
+default = ["all", "std"]
+all = []
+alloc = []
+std = ["alloc"]
+unstable = []
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+edky_rs = { package = "edky", version = "0.1.0" }
+magnus = "0.8"
+rb-sys = { version = "0.9", features = ["stable-api-compiled-fallback"] }
+
+[dev-dependencies]
+rb-sys-test-helpers = "0.3"
+
+[build-dependencies]
+rb-sys-env = "0.2"
