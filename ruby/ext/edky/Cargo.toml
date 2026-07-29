@@ -19,20 +19,20 @@ publish = false
 [features]
 default = ["all", "std"]
 all = []
-alloc = []
-std = ["alloc"]
+alloc = ["distrib/alloc"]
+std = ["alloc", "distrib/std"]
 unstable = []
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
+distrib = { version = "0.0.1", default-features = false, features = ["export", "ruby"] }
 edky_rs = { package = "edky", version = "0.1.0" }
-magnus = "0.8"
 rb-sys = { version = "0.9", features = ["stable-api-compiled-fallback"] }
 
 [dev-dependencies]
 rb-sys-test-helpers = "0.3"
 
 [build-dependencies]
-rb-sys-env = "0.2"
+distrib-build = { version = "0.0.1", default-features = false, features = ["std", "ruby"] }

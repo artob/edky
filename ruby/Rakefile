@@ -1,11 +1,9 @@
-require 'bundler/gem_tasks'
-require 'rake/extensiontask'
-require 'rake/testtask'
-require 'rb_sys/extensiontask'
-require 'rspec/core/rake_task'
+require 'distrib/ruby/tasks'
 
 GEMSPEC = Bundler.load_gemspec(Dir['*.gemspec'].first)
 
 RbSys::ExtensionTask.new(GEMSPEC.name, GEMSPEC) do |ext|
   ext.lib_dir = ['lib', GEMSPEC.name].join('/')
 end
+
+task default: %w[build]

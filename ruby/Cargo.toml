@@ -3,3 +3,5 @@
 [workspace]
 members = ["ext/*"]
 resolver = "2"
+
+[patch.crates-io]
