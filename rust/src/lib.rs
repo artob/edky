@@ -1,6 +1,17 @@
 // This is free and unencumbered software released into the public domain.
 
 //! Edky converts Ed25519 public keys between various encoding formats.
+//!
+//! # Feature support
+//!
+//! With default features disabled, hexadecimal key parsing, key display, and
+//! encoding-name parsing require neither allocation nor `std`. The `alloc`
+//! feature adds string-returning encoding APIs and owned-data conversions;
+//! `std` includes `alloc`. Defaults enable `std` and all encodings.
+//!
+//! Codec features enable their required dependencies; `base32z` and `base64`
+//! also enable `alloc`. Integrations are optional. The `clientele` feature
+//! enables `std` for its error conversion, and `cli` enables both.
 
 #![no_std]
 #![allow(unused)]
@@ -14,7 +25,7 @@ extern crate alloc;
 extern crate std;
 
 #[doc = include_str!("../README.md")]
-#[cfg(doctest)]
+#[cfg(all(doctest, feature = "encodings"))]
 pub struct ReadmeDoctests;
 
 mod decode;

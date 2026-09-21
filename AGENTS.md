@@ -17,7 +17,8 @@
 - Preserve `#![no_std]`; use `core`, gate allocation on `alloc`, and gate `std`
   usage explicitly. Keep dependencies minimal and integrations optional.
 - Defaults enable `std` and all encodings, not all interops. The CLI requires
-  `cli`. `iroh` enables the format alias; `iroh1` enables the crate integration.
+  `cli`; `clientele` enables `std`. `iroh` enables the format alias; `iroh1`
+  enables the crate integration.
 - Codec changes must keep Cargo features, enum variants/`VARIANTS`, the format
   registry, encode/decode arms, error conversions, and sample vectors consistent.
 - `PublicKeyBytes` holds raw bytes, not a cryptographically validated point.
@@ -39,14 +40,14 @@ cargo clippy --locked --all-targets --features cli
 rake check
 ```
 `rake check` needs Ruby 3.4+ and the `csv` gem; it checks every sample-format pair.
-`rust/tests/decode.rs` covers malformed inputs and decoded lengths; `rake check`
-additionally exercises CLI conversions across every format pair.
+`rust/tests/` covers malformed inputs, decoded lengths, and encoding-name parsing;
+`rake check` additionally exercises CLI conversions across every format pair.
 
 For feature/dependency changes, also check `--no-default-features`,
 `--no-default-features --features alloc`, each affected feature in isolation, and
-`--all-features` with `cargo check --locked`. Known baseline failures: bare
-no-default (allocating FromStr derive), base32z-only (error impl cfg), and
-clientele without std. Report existing failures separately from regressions.
+`--all-features` with `cargo check --locked`. Run `cargo test --locked` for affected
+minimal configurations too; README doctests require `encodings`.
+Report existing failures separately from regressions.
 
 For JS changes: `bun run build` and `bunx tsc --noEmit` in `js/`.
 Other language test suites are unfinished; do not mistake empty suites for coverage.

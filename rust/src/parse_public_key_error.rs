@@ -3,6 +3,9 @@
 use thiserror::Error;
 
 /// Errors when parsing public key bytes or an encoded public key.
+///
+/// Conversions from `data_encoding` errors are available with either `base32z`
+/// or `base64`, including builds without `std`.
 #[derive(Clone, Copy, Debug, Eq, Error, PartialEq)]
 pub enum ParsePublicKeyError {
     /// The input or decoded payload had an invalid length.
@@ -51,7 +54,7 @@ impl From<bs58::decode::Error> for ParsePublicKeyError {
     }
 }
 
-#[cfg(feature = "base64")]
+#[cfg(any(feature = "base32z", feature = "base64"))]
 impl From<data_encoding::DecodeError> for ParsePublicKeyError {
     fn from(input: data_encoding::DecodeError) -> Self {
         use data_encoding::DecodeKind::*;
@@ -64,7 +67,7 @@ impl From<data_encoding::DecodeError> for ParsePublicKeyError {
     }
 }
 
-#[cfg(feature = "base64")]
+#[cfg(any(feature = "base32z", feature = "base64"))]
 impl From<data_encoding::DecodePartial> for ParsePublicKeyError {
     fn from(input: data_encoding::DecodePartial) -> Self {
         input.error.into()
