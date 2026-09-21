@@ -1,7 +1,7 @@
 # Edky
 
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://unlicense.org)
-[![Compatibility](https://img.shields.io/badge/rust-2024%2B-blue)](https://endoflife.date/rust)
+[![Compatibility](https://img.shields.io/badge/rust-1.97%2B-blue)](https://endoflife.date/rust)
 [![Package on Crates.io](https://img.shields.io/crates/v/edky)](https://crates.io/crates/edky)
 [![Documentation](https://img.shields.io/docsrs/edky?label=docs.rs)](https://docs.rs/edky)
 
@@ -36,7 +36,7 @@
 
 ## 🛠️ Prerequisites
 
-- [Rust] 2024+
+- [Rust] 1.97+
 
 ## ⬇️ Installation
 
