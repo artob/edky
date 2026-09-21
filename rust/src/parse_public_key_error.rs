@@ -2,10 +2,13 @@
 
 use thiserror::Error;
 
-/// Errors when parsing a public key from a hexadecimal input string.
+/// Errors when parsing public key bytes or an encoded public key.
 #[derive(Clone, Copy, Debug, Eq, Error, PartialEq)]
 pub enum ParsePublicKeyError {
-    /// The string was not exactly 64 characters long.
+    /// The input or decoded payload had an invalid length.
+    ///
+    /// The value depends on the parsing path: an input or decoded byte length,
+    /// a codec error position, or zero when the codec does not supply a length.
     #[error("invalid public key length")]
     InvalidLength(usize),
 

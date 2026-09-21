@@ -39,7 +39,8 @@ cargo clippy --locked --all-targets --features cli
 rake check
 ```
 `rake check` needs Ruby 3.4+ and the `csv` gem; it checks every sample-format pair.
-`cargo test` alone currently covers only README doctests.
+`rust/tests/decode.rs` covers malformed inputs and decoded lengths; `rake check`
+additionally exercises CLI conversions across every format pair.
 
 For feature/dependency changes, also check `--no-default-features`,
 `--no-default-features --features alloc`, each affected feature in isolation, and

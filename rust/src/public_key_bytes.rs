@@ -57,6 +57,10 @@ impl FromStr for PublicKeyBytes {
 impl PublicKeyBytes {
     pub const ZERO: Self = Self([0u8; PUBLIC_KEY_LEN]);
 
+    /// Decodes an exactly 32-byte public key without padding or truncation.
+    ///
+    /// See [`crate::decode`] for accepted representations, feature requirements,
+    /// and errors. The decoded bytes are not cryptographically validated.
     pub fn decode(
         encoding: PublicKeyEncoding,
         input: impl AsRef<str>,

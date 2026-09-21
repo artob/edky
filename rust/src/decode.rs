@@ -2,6 +2,32 @@
 
 use crate::{PUBLIC_KEY_LEN, ParsePublicKeyError, PublicKeyBytes, PublicKeyEncoding};
 
+/// Decodes a public key using the selected encoding and fixed-size buffers.
+///
+/// The decoded key must contain exactly [`PUBLIC_KEY_LEN`] bytes, excluding any
+/// format framing. Short keys are not zero-padded and long keys are not truncated.
+/// This validates the representation, not whether the bytes describe a valid
+/// Ed25519 point. Available encodings depend on [`PublicKeyEncoding`]'s features.
+/// OpenSSH accepts either a `ssh-ed25519 ` prefix followed by the Base64 wire
+/// payload, or the bare wire payload.
+///
+/// # Errors
+///
+/// Returns [`ParsePublicKeyError`] for invalid lengths, encoding characters,
+/// padding, prefixes, or framing. Malformed input is rejected without panicking.
+///
+/// # Examples
+///
+/// ```
+/// use edky::{decode, PublicKeyBytes, PublicKeyEncoding};
+///
+/// let key = decode(
+///     PublicKeyEncoding::Base16,
+///     "0000000000000000000000000000000000000000000000000000000000000000",
+/// )?;
+/// assert_eq!(key, PublicKeyBytes::ZERO);
+/// # Ok::<(), edky::ParsePublicKeyError>(())
+/// ```
 pub fn decode(
     encoding: PublicKeyEncoding,
     input: impl AsRef<str>,
@@ -9,7 +35,7 @@ pub fn decode(
     use ParsePublicKeyError::*;
     use PublicKeyEncoding::*;
     let input = input.as_ref();
-    let mut buffer = [0u8; 32];
+    let mut buffer = [0u8; PUBLIC_KEY_LEN];
     Ok(match encoding {
         Base16 => input.parse::<PublicKeyBytes>()?,
 
@@ -18,27 +44,32 @@ pub fn decode(
             let Some(input) = input.strip_prefix("ⒶY") else {
                 return Err(InvalidPrefix);
             };
-            bs58::decode(input).onto(&mut buffer)?;
-            PublicKeyBytes(buffer)
+            let len = bs58::decode(input).onto(&mut buffer)?;
+            PublicKeyBytes::from_slice(&buffer[..len])?
         },
 
         #[cfg(feature = "base58")]
         Base58 => {
-            bs58::decode(input).onto(&mut buffer)?;
-            PublicKeyBytes(buffer)
+            let len = bs58::decode(input).onto(&mut buffer)?;
+            PublicKeyBytes::from_slice(&buffer[..len])?
         },
 
         #[cfg(feature = "base64")]
         Base64 => {
-            let mut buffer = [0u8; 33]; // with extra padding byte
-            data_encoding::BASE64.decode_mut(input.as_bytes(), &mut buffer)?;
-            PublicKeyBytes::from_slice(&buffer[..32]).unwrap()
+            // Padded Base64's output-size estimate includes the padding byte.
+            let mut buffer = [0u8; PUBLIC_KEY_LEN + 1];
+            let len = decode_data_encoding(&data_encoding::BASE64, input.as_bytes(), &mut buffer)?;
+            PublicKeyBytes::from_slice(&buffer[..len])?
         },
 
         #[cfg(feature = "base64")]
         Base64Url => {
-            data_encoding::BASE64URL_NOPAD.decode_mut(input.as_bytes(), &mut buffer)?;
-            PublicKeyBytes(buffer)
+            let len = decode_data_encoding(
+                &data_encoding::BASE64URL_NOPAD,
+                input.as_bytes(),
+                &mut buffer,
+            )?;
+            PublicKeyBytes::from_slice(&buffer[..len])?
         },
 
         #[cfg(feature = "multibase")]
@@ -48,8 +79,11 @@ pub fn decode(
             let Some(input) = input.strip_prefix("z") else {
                 return Err(InvalidPrefix);
             };
-            let mut buffer = [0u8; 34];
-            bs58::decode(input).onto(&mut buffer)?;
+            let mut buffer = [0u8; 2 + PUBLIC_KEY_LEN];
+            let len = bs58::decode(input).onto(&mut buffer)?;
+            if len != buffer.len() {
+                return Err(InvalidLength(len));
+            }
             if buffer[0] != 0xed {
                 return Err(InvalidPrefix);
             }
@@ -64,8 +98,8 @@ pub fn decode(
             let Some(input) = input.strip_prefix("ed25519:") else {
                 return Err(InvalidPrefix);
             };
-            bs58::decode(input).onto(&mut buffer)?;
-            PublicKeyBytes(buffer)
+            let len = bs58::decode(input).onto(&mut buffer)?;
+            PublicKeyBytes::from_slice(&buffer[..len])?
         },
 
         #[cfg(feature = "base64")]
@@ -79,11 +113,10 @@ pub fn decode(
                 size_of::<u32>() + b"ssh-ed25519".len() + size_of::<u32>() + PUBLIC_KEY_LEN;
             let mut buffer = [0u8; BUFFER_LEN];
 
-            let decode_len = data_encoding::BASE64.decode_len(input.len())?;
-            if decode_len != buffer.len() {
-                return Err(InvalidLength(input.len()));
+            let len = decode_data_encoding(&data_encoding::BASE64, input, &mut buffer)?;
+            if len != buffer.len() {
+                return Err(InvalidLength(len));
             }
-            data_encoding::BASE64.decode_mut(input, &mut buffer[..decode_len])?;
 
             let input = buffer;
             let (slice, input) = input.split_at(size_of::<u32>());
@@ -101,18 +134,30 @@ pub fn decode(
                 return Err(InvalidChars);
             };
 
-            PublicKeyBytes::from_slice(&input)?
+            PublicKeyBytes::from_slice(input)?
         },
 
         #[cfg(feature = "base32z")]
         Base32z => {
-            data_encoding_macro::new_encoding! {
+            let encoding = data_encoding_macro::new_encoding! {
                 symbols: "ybndrfg8ejkmcpqxot1uwisza345h769",
-            }
-            .decode_mut(input.as_bytes(), &mut buffer)?;
-            PublicKeyBytes(buffer)
+            };
+            let len = decode_data_encoding(&encoding, input.as_bytes(), &mut buffer)?;
+            PublicKeyBytes::from_slice(&buffer[..len])?
         },
-
-        _ => todo!(), // TODO
     })
+}
+
+#[cfg(any(feature = "base32z", feature = "base64"))]
+fn decode_data_encoding(
+    encoding: &data_encoding::Encoding,
+    input: &[u8],
+    buffer: &mut [u8],
+) -> Result<usize, ParsePublicKeyError> {
+    let decode_len = encoding.decode_len(input.len())?;
+    if decode_len > buffer.len() {
+        return Err(ParsePublicKeyError::InvalidLength(input.len()));
+    }
+    // decode_mut requires exactly decode_len output bytes, even for short input.
+    Ok(encoding.decode_mut(input, &mut buffer[..decode_len])?)
 }
