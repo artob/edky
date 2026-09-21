@@ -40,8 +40,8 @@ cargo clippy --locked --all-targets --features cli
 rake check
 ```
 `rake check` needs Ruby 3.4+ and the `csv` gem; it checks every sample-format pair.
-`rust/tests/` covers malformed inputs, decoded lengths, and encoding-name parsing;
-`rake check` additionally exercises CLI conversions across every format pair.
+`rust/tests/` covers malformed inputs, decoded lengths, encoding-name parsing,
+and CLI behavior; `rake check` additionally exercises every format pair.
 
 For feature/dependency changes, also check `--no-default-features`,
 `--no-default-features --features alloc`, each affected feature in isolation, and

@@ -10,7 +10,8 @@ Commands:
   help     Print this message or the help of the given subcommand(s)
 
 Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always,
+                       never]
   -d, --debug          Enable debugging output
       --license        Show license information
   -v, --verbose...     Enable verbose output (may be repeated for more verbosity)

@@ -177,7 +177,8 @@ Commands:
   help     Print this message or the help of the given subcommand(s)
 
 Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always,
+                       never]
   -d, --debug          Enable debugging output
       --license        Show license information
   -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
@@ -194,7 +195,8 @@ List the supported public key encoding formats
 Usage: edky list [OPTIONS]
 
 Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always,
+                       never]
   -d, --debug          Enable debugging output
   -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
   -h, --help           Print help
@@ -206,13 +208,14 @@ Options:
 $ edky convert --help
 Convert Ed25519 public keys between various encoding formats
 
-Usage: edky convert [OPTIONS] [INPUTS]...
+Usage: edky convert [OPTIONS] <INPUTS>...
 
 Arguments:
-  [INPUTS]...  The input strings to convert
+  <INPUTS>...  The input strings to convert
 
 Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always,
+                       never]
   -f, --from <FROM>    The input encoding format [default: hex]
   -d, --debug          Enable debugging output
   -t, --to <TO>        The output encoding format [default: hex]
@@ -226,13 +229,14 @@ Options:
 $ edky parse --help
 Parse Ed25519 public keys in various encoding formats
 
-Usage: edky parse [OPTIONS] [INPUTS]...
+Usage: edky parse [OPTIONS] <INPUTS>...
 
 Arguments:
-  [INPUTS]...  The input strings to parse
+  <INPUTS>...  The input strings to parse
 
 Options:
-      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always, never]
+      --color <COLOR>  Set the color output mode [default: auto] [possible values: auto, always,
+                       never]
   -f, --from <FROM>    The input encoding format [default: hex]
   -d, --debug          Enable debugging output
   -v, --verbose...     Enable verbose output (may be repeated for more verbosity)
