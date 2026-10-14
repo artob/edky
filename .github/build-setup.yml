@@ -1,0 +1,8 @@
+# cargo-dist leaves the local installer shell implicit. GitHub's default Bash
+# invocation omits pipefail, hiding download failures in `curl | sh`.
+- name: Enable pipeline failure reporting
+  if: ${{ runner.os != 'Windows' }}
+  shell: bash
+  run: |
+    echo 'set -o pipefail' > "$RUNNER_TEMP/dist-bash-env.sh"
+    echo "BASH_ENV=$RUNNER_TEMP/dist-bash-env.sh" >> "$GITHUB_ENV"
